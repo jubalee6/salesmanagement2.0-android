@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+    <color name="black">#000000</color>
+    <color name="gray900">#212121</color>
+    <color name="gray800">#424242</color>
+    <color name="gray700">#656565</color>
+    <color name="gray600">#757575</color>
+    <color name="gray400">#BDBDBD</color>
+    <color name="gray200">#EEEEEE</color>
+    <color name="grayVague">#ecebeb</color>
+    <color name="white">#ffffff</color>
+
+
+    <color name="red">#ff0000</color>
+    <color name="red500">#F44336</color>
+    <color name="red800">#C62828</color>
+    <color name="red600">#E53935</color>
+    <color name="red400">#EF5350</color>
+    <color name="defaultRed200">#EF9A9A</color>
+
+    <color name="green">#00ff00</color>
+    <color name="green500">#4CAF50</color>
+    <color name="green800">#2E7D32</color>
+    <color name="green600">#43A047</color>
+    <color name="green400">#66BB6A</color>
+    <color name="green200">#A5D6A7</color>
+    <color name="greenCustom">#4fbc84</color>
+
+    <color name="blue">#0000ff</color>
+    <color name="blue500">#2196F3</color>
+    <color name="blue800">#1565C0</color>
+    <color name="blue600">#1E88E5</color>
+    <color name="blue400">#42A5F5</color>
+    <color name="blue200">#90CAF9</color>
+
+    <color name="pink500">#E91E63</color>
+    <color name="purple500">#9C27B0</color>
+    <color name="deepPurple500">#673AB7</color>
+    <color name="indigo500">#3F51B5</color>
+    <color name="lightBlue500">#03A9F4</color>
+    <color name="cyan500">#00BCD4</color>
+    <color name="teal500">#009688</color>
+    <color name="lightGreen500">#8BC34A</color>
+    <color name="lime500">#CDDC39</color>
+    <color name="yellow500">#FFEB3B</color>
+    <color name="amber500">#FFC107</color>
+    <color name="orange500">#FF9800</color>
+    <color name="deepOrange500">#FF5722</color>
+    <color name="brown500">#795548</color>
+    <color name="blueGray500">#607D8B</color>
+    <color name="greenCustomTranslucent">#404fbc84</color>
+
+
+    <color name="primary">@color/gray800</color>
+    <color name="primaryDark">@color/black</color>
+    <color name="secondary">@color/pink500</color>
+    <color name="accent">@color/greenCustom</color>
+    <color name="textColor">@color/white</color>
+    <color name="textColorHint">@color/gray400</color>
+    <color name="textColorHintInverse">@color/gray600</color>
+    <color name="textColorPrimary">@color/white</color>
+    <color name="textColorPrimaryInverse">@color/black</color>
+    <color name="textColorSecondary">@color/gray200</color>
+    <color name="textColorSecondaryInverse">@color/gray800</color>
+
+    <color name="defaultCover">#88000000</color>
+    <color name="defaultButton">#263238</color>
+    <color name="defaultRowBackground">@color/gray200</color>
+    <color name="clickedImageView">#80757575</color>
+
+    <!-- 콜정보 Color. -->
+    <color name="horizentalLine1Color">#0C274C</color>
+    <color name="horizentalLine2Color">#264cce</color>
+    <color name="defaultLightRed">#E0335D</color>
+    <color name="defaultGray">#888888</color>
+    <color name="defaultWhite">#ffffff</color>
+    <color name="defaultTransparent">#00000000</color>
+    <color name="defaultDarkBlue">#091928</color>
+    <color name="defaultLightYellow">#F5EED2</color>
+    <color name="defaultBlack">#000000</color>
+    <color name="defaultDarkGray">#444444</color>
+    <color name="defaultLightBlue">#7ECEFD</color>
+    <color name="defaultYellow">#F4BA05</color>
+    <color name="defaultLightGreen">#CCD970</color>
+    <color name="defaultLightGray">#eeeeee</color>
+    <color name="defaultDivider">@color/defaultLightGray</color>
+</resources>
