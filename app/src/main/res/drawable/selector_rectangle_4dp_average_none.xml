@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/pressed"
+    >
+    <item>
+        <selector>
+            <item
+                android:drawable="@drawable/rectangle_4dp_pressedgray_none"
+                android:state_focused="true"
+                />
+            <item
+                android:drawable="@drawable/rectangle_4dp_pressedgray_none"
+                android:state_pressed="true"
+                />
+            <item
+                android:drawable="@drawable/rectangle_4dp_pressedgray_none"
+                android:state_selected="true"
+                />
+            <item
+                android:drawable="@drawable/rectangle_4dp_pressedgray_none"
+                android:state_checked="true"
+                />
+            <item
+                android:drawable="@drawable/rectangle_4dp_pressedgray_none"
+                android:state_activated="true"
+                />
+            <item
+                android:drawable="@drawable/rectangle_4dp_disable_none"
+                android:state_enabled="false"
+                />
+            <item android:drawable="@drawable/rectangle_4dp_average_none" />
+        </selector>
+    </item>
+</ripple>

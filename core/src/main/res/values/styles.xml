@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TextView Style. -->
+    <style name="StyleTextView" parent="">
+        <item name="android:textColorHint">@color/light_gray</item>
+    </style>
+    <style name="StyleTextView.Regular" parent="StyleTextView">
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+    <style name="StyleTextView.Bold" parent="StyleTextView">
+        <item name="android:fontFamily">@font/bold</item>
+    </style>
+    <style name="StyleTextView.ExtraBold" parent="StyleTextView">
+        <item name="android:fontFamily">@font/extra_bold</item>
+    </style>
+    <style name="StyleTextView.Regular.Small" parent="StyleTextView.Regular">
+        <item name="android:textSize">@dimen/sp12</item>
+    </style>
+    <style name="StyleTextView.Regular.Medium" parent="StyleTextView.Regular">
+        <item name="android:textSize">@dimen/sp15</item>
+    </style>
+    <style name="StyleTextView.Regular.Large" parent="StyleTextView.Regular">
+        <item name="android:textSize">@dimen/sp18</item>
+    </style>
+    <style name="StyleTextView.Bold.Small" parent="StyleTextView.Bold">
+        <item name="android:textSize">@dimen/sp12</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium" parent="StyleTextView.Bold">
+        <item name="android:textSize">@dimen/sp15</item>
+    </style>
+    <style name="StyleTextView.Bold.Large" parent="StyleTextView.Bold">
+        <item name="android:textSize">@dimen/sp18</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Small" parent="StyleTextView.ExtraBold">
+        <item name="android:textSize">@dimen/sp12</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Medium" parent="StyleTextView.ExtraBold">
+        <item name="android:textSize">@dimen/sp15</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Large" parent="StyleTextView.ExtraBold">
+        <item name="android:textSize">@dimen/sp18</item>
+    </style>
+    <style name="StyleTextView.Regular.Medium.Normal" parent="StyleTextView.Regular.Medium">
+        <item name="android:textColor">@color/normal</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Large.Normal" parent="StyleTextView.ExtraBold.Large">
+        <item name="android:textColor">@color/normal</item>
+    </style>
+
+
+    <!-- EditText Style. -->
+
+
+    <!-- Button Style. -->
+    <!--suppress CheckTagEmptyBody -->
+    <style name="StyleButton.Bold.Medium.Primary" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_none_primary_none</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.LightGray" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/normal</item>
+        <item name="android:background">@drawable/selector_rectangle_none_light_none</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Warning" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_none_warning_none</item>
+    </style>
+
+
+    <style name="StyleAlertDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/rectangle_8dp_white_none</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>-->
+    </style>
+</resources>

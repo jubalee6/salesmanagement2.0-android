@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="View.ActionBar" parent="">
+        <item name="android:minHeight">@dimen/dp56</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    <!-- TextView Style. -->
+    <style name="StyleTextView" parent="">
+        <item name="android:lineSpacingExtra">@dimen/dp8</item>
+        <item name="android:textColorHint">@color/light_gray</item>
+    </style>
+    <style name="StyleTextView.Regular" parent="StyleTextView">
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+    <style name="StyleTextView.Bold" parent="StyleTextView">
+        <item name="android:fontFamily">@font/bold</item>
+    </style>
+    <style name="StyleTextView.ExtraBold" parent="StyleTextView">
+        <item name="android:fontFamily">@font/extra_bold</item>
+    </style>
+    <style name="StyleTextView.Regular.Small" parent="StyleTextView.Regular">
+        <item name="android:textSize">@dimen/sp12</item>
+    </style>
+    <style name="StyleTextView.Regular.Medium" parent="StyleTextView.Regular">
+        <item name="android:textSize">@dimen/sp15</item>
+    </style>
+    <style name="StyleTextView.Regular.Large" parent="StyleTextView.Regular">
+        <item name="android:textSize">@dimen/sp18</item>
+    </style>
+    <style name="StyleTextView.Bold.Small" parent="StyleTextView.Bold">
+        <item name="android:textSize">@dimen/sp12</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium" parent="StyleTextView.Bold">
+        <item name="android:textSize">@dimen/sp15</item>
+    </style>
+    <style name="StyleTextView.Bold.Large" parent="StyleTextView.Bold">
+        <item name="android:textSize">@dimen/sp18</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Small" parent="StyleTextView.ExtraBold">
+        <item name="android:textSize">@dimen/sp12</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Medium" parent="StyleTextView.ExtraBold">
+        <item name="android:textSize">@dimen/sp15</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Large" parent="StyleTextView.ExtraBold">
+        <item name="android:textSize">@dimen/sp18</item>
+    </style>
+    <style name="StyleTextView.Regular.White" parent="StyleTextView.Regular">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="StyleTextView.Regular.Small.Primary" parent="StyleTextView.Regular.Small">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+    <style name="StyleTextView.Regular.Small.Black" parent="StyleTextView.Regular.Small">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="StyleTextView.Regular.Small.Dark" parent="StyleTextView.Regular.Small">
+        <item name="android:textColor">@color/dark</item>
+    </style>
+    <style name="StyleTextView.Regular.Small.DeepGray" parent="StyleTextView.Regular.Small">
+        <item name="android:textColor">@color/deep_gray</item>
+    </style>
+    <style name="StyleTextView.Regular.Small.Normal" parent="StyleTextView.Regular.Small">
+        <item name="android:textColor">@color/normal</item>
+    </style>
+    <style name="StyleTextView.Regular.Small.Gray" parent="StyleTextView.Regular.Small">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    <style name="StyleTextView.Regular.Small.DarkGray" parent="StyleTextView.Regular.Small">
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+    <style name="StyleTextView.Regular.Small.Label" parent="StyleTextView.Regular.Small">
+        <item name="android:textColor">@color/normal</item>
+    </style>
+    <style name="StyleTextView.Regular.Small.Primary.PrimaryDark" parent="StyleTextView.Regular.Small">
+        <item name="android:textColor">@drawable/selector_color_primary_primarydark</item>
+    </style>
+    <style name="StyleTextView.Regular.Medium.Black" parent="StyleTextView.Regular.Medium">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="StyleTextView.Regular.Medium.PrimaryDark" parent="StyleTextView.Regular.Medium">
+        <item name="android:textColor">@color/primary_dark</item>
+    </style>
+    <style name="StyleTextView.Regular.Medium.Dark" parent="StyleTextView.Regular.Medium">
+        <item name="android:textColor">@color/dark</item>
+    </style>
+    <style name="StyleTextView.Regular.Medium.DeepGray" parent="StyleTextView.Regular.Medium">
+        <item name="android:textColor">@color/deep_gray</item>
+    </style>
+    <style name="StyleTextView.Regular.Medium.Normal" parent="StyleTextView.Regular.Medium">
+        <item name="android:textColor">@color/normal</item>
+    </style>
+    <style name="StyleTextView.Regular.Medium.Gray" parent="StyleTextView.Regular.Medium">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    <style name="StyleTextView.Bold.Gray" parent="StyleTextView.Bold">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    <style name="StyleTextView.Regular.Medium.DarkGray" parent="StyleTextView.Regular.Medium">
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+    <!--<style name="StyleTextView.Bold.Stroke.Corners.White" parent="StyleTextView.Bold">
+        <item name="android:textColor">@color/normal</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:gravity">center_vertical</item>
+        &lt;!&ndash;<item name="android:textSize">@dimen/sp15</item>&ndash;&gt;
+        &lt;!&ndash;<item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeStepGranularity">1sp</item>
+        <item name="autoSizeMinTextSize">@dimen/sp10</item>
+        <item name="autoSizeMaxTextSize">@dimen/sp15</item>&ndash;&gt;
+        <item name="android:background">@drawable/selector_textview_4dp_white_normal</item>
+    </style>-->
+    <style name="StyleTextView.Bold.Medium.Primary" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium.White" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium.Black" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium.Dark" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@color/dark</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium.DeepGray" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@color/deep_gray</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium.Gray" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium.DarkGray" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium.Normal" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@color/normal</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium.Red" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@color/red_500</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium.Warning" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@color/warning</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium.Normal.Primary" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@drawable/selector_color_normal_primary</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium.Stroke.Corners.White" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@color/normal</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:gravity">center_vertical</item>
+        <!--<item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">@dimen/sp12</item>
+        <item name="autoSizeMaxTextSize">@dimen/sp15</item>-->
+        <item name="android:background">@drawable/selector_textview_4dp_white_normal</item>
+        <!--<item name="android:background">@drawable/rectangle_4dp_white_normal</item>-->
+    </style>
+    <style name="StyleTextView.Bold.Medium.Corners.White.NoPadding" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@drawable/selector_color_normal_primary</item>
+        <item name="colorControlNormal">@color/transparent</item>
+        <item name="colorControlActivated">@color/transparent</item>
+        <item name="colorControlHighlight">@color/transparent</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:background">@drawable/selector_rectangle_8dp_white_none_3</item>
+    </style>
+    <style name="StyleTextView.Bold.Medium.Primary.PrimaryDark" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@drawable/selector_color_primary_primarydark</item>
+    </style>
+    <style name="StyleTextView.Bold.Large.White" parent="StyleTextView.Bold.Large">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.White" parent="StyleTextView.ExtraBold">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Medium.White" parent="StyleTextView.ExtraBold.Medium">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Medium.Black" parent="StyleTextView.ExtraBold.Medium">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Medium.Dark" parent="StyleTextView.ExtraBold.Medium">
+        <item name="android:textColor">@color/dark</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Medium.DeepGray" parent="StyleTextView.ExtraBold.Medium">
+        <item name="android:textColor">@color/deep_gray</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Medium.Normal" parent="StyleTextView.ExtraBold.Medium">
+        <item name="android:textColor">@color/normal</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Medium.Primary" parent="StyleTextView.ExtraBold.Medium">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Medium.Accent" parent="StyleTextView.ExtraBold.Medium">
+        <item name="android:textColor">@color/accent</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Large.White" parent="StyleTextView.ExtraBold.Large">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Large.Black" parent="StyleTextView.ExtraBold.Large">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Large.DarkGray" parent="StyleTextView.ExtraBold.Large">
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Large.DeepGray" parent="StyleTextView.ExtraBold.Large">
+        <item name="android:textColor">@color/deep_gray</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Large.Normal" parent="StyleTextView.ExtraBold.Large">
+        <item name="android:textColor">@color/normal</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Large.ActionBar" parent="StyleTextView.ExtraBold.Large">
+        <item name="android:minHeight">@dimen/dp56</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    <style name="StyleTextView.ExtraBold.Large.Dialog.ActionBar" parent="StyleTextView.ExtraBold.Large">
+        <item name="android:minHeight">@dimen/dp56</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/primary</item>
+    </style>
+
+    <!-- EditText Style. -->
+    <style name="StyleEditText.Bold.Medium.None" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@drawable/selector_color_normal_primary</item>
+        <item name="colorControlNormal">@color/transparent</item>
+        <item name="colorControlActivated">@color/transparent</item>
+        <item name="colorControlHighlight">@color/transparent</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:background">@null</item>
+    </style>
+    <style name="StyleEditText.Bold.Medium.Corners.White" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@drawable/selector_color_normal_primary</item>
+        <item name="colorControlNormal">@color/transparent</item>
+        <item name="colorControlActivated">@color/transparent</item>
+        <item name="colorControlHighlight">@color/transparent</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:background">@drawable/selector_rectangle_8dp_white_none_3</item>
+    </style>
+    <style name="StyleEditText.Bold.Medium.Corners.White.NoPadding" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@drawable/selector_color_normal_primary</item>
+        <item name="colorControlNormal">@color/transparent</item>
+        <item name="colorControlActivated">@color/transparent</item>
+        <item name="colorControlHighlight">@color/transparent</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:background">@drawable/selector_rectangle_8dp_white_none_3</item>
+    </style>
+    <style name="StyleEditText.Bold.Medium.Stroke.Corners.White" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@drawable/selector_color_normal_primary</item>
+        <item name="colorControlNormal">@color/transparent</item>
+        <item name="colorControlActivated">@color/transparent</item>
+        <item name="colorControlHighlight">@color/transparent</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_white_normal</item>
+    </style>
+    <style name="StyleEnhancedEditText.Bold.Medium.Corners.White" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@drawable/selector_color_normal_primary</item>
+        <item name="colorControlNormal">@color/transparent</item>
+        <item name="colorControlActivated">@color/transparent</item>
+        <item name="colorControlHighlight">@color/transparent</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:drawablePadding">@dimen/dp4</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_white_none_3</item>
+    </style>
+    <style name="StyleEnhancedEditText.Bold.Medium.Stroke.Corners.White" parent="StyleTextView.Bold.Medium">
+        <item name="android:textColor">@drawable/selector_color_normal_primary</item>
+        <item name="colorControlNormal">@color/transparent</item>
+        <item name="colorControlActivated">@color/transparent</item>
+        <item name="colorControlHighlight">@color/transparent</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:drawablePadding">@dimen/dp4</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_white_normal</item>
+    </style>
+
+    <!-- Button Style. -->
+    <!--suppress CheckTagEmptyBody -->
+    <style name="StyleButton.None" parent="">
+        <item name="android:background">@null</item>
+    </style>
+    <style name="StyleButton.Corners.Black" parent="">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_black_none
+        </item>
+    </style>
+    <style name="StyleButton.Corners.DeepGray" parent="">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_deep_gray_none
+        </item>
+    </style>
+    <style name="StyleButton.Regular.Small.White" parent="StyleTextView.Regular.Small">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:background">@drawable/selector_rectangle_none_white_none
+        </item>
+    </style>
+    <style name="StyleButton.Regular.Medium.Corners.White" parent="StyleTextView.Regular.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_white_none</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.None" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:background">@null</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Oval.White" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">@dimen/dp8</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_oval_666666_none</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.CornerSize50</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Sales.Close" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_none_9ab1fc_none</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Corners.Black" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_black_none</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Corners.Black.NoPadding" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_black_none</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Corners.Dark" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">@dimen/dp8</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_dark_none</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Corners.DeepGray" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_deep_gray_none</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Corners.DeepGray.NoPadding" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_deep_gray_none</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Corners.White" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:background">@drawable/selector_rectangle_8dp_white_none_2</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Corners.Primary" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_primary_none</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Corners.Primary.ShortPadding" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">@dimen/dp4</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_primary_none</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Corners.Outlined.Normal" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@drawable/selector_color_normal_primary</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_normal_normal</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Corners.Outlined.Normal.ShortPadding" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">@dimen/dp4</item>
+        <item name="android:textColor">@drawable/selector_color_normal_primary</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_normal_normal</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Corners.Gray" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_gray_none</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Corners.Gray.NoPadding" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_gray_none</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Primary" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_none_primary_none</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.LightGray" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/normal</item>
+        <item name="android:background">@drawable/selector_rectangle_none_light_none</item>
+    </style>
+    <style name="StyleButton.Bold.Medium.Warning" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_none_warning_none</item>
+    </style>
+    <style name="StyleButton.Bold.Large.Primary" parent="StyleTextView.Bold.Large">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_none_primary_none</item>
+    </style>
+    <style name="StyleButton.Bold.Large.White" parent="StyleTextView.Bold.Large">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@drawable/selector_rectangle_none_white_none</item>
+    </style>
+    <style name="StyleButton.ExtraBold.Medium.Primary" parent="StyleTextView.ExtraBold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_none_primary_none</item>
+    </style>
+    <style name="StyleButton.ExtraBold.Medium.Light" parent="StyleTextView.ExtraBold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@drawable/selector_color_normal_normal</item>
+        <item name="android:background">@drawable/selector_rectangle_none_light_none</item>
+    </style>
+    <style name="StyleButton.ExtraBold.Medium.Corners.Primary" parent="StyleTextView.ExtraBold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_primary_none</item>
+    </style>
+    <style name="StyleButton.ExtraBold.Medium.Corners.PrimaryDark" parent="StyleTextView.ExtraBold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_primarydark_none</item>
+    </style>
+    <style name="StyleButton.ExtraBold.Medium.Corners.Gray" parent="StyleTextView.ExtraBold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_gray_none</item>
+    </style>
+    <style name="StyleButton.ExtraBold.Large.Primary" parent="StyleTextView.ExtraBold.Large">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_none_primary_none</item>
+    </style>
+    <style name="StyleSpinnerButton.Bold.Medium.White" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:drawablePadding">@dimen/dp8</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="drawableEndCompat">@drawable/selector_ic_arrow_down</item>
+        <item name="android:background">@null</item>
+    </style>
+    <style name="StyleSpinnerButton.Bold.Medium.Stroke.Corners.White" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">@dimen/dp8</item>
+        <item name="android:drawablePadding">@dimen/dp8</item>
+        <item name="android:textColor">@color/normal</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="drawableEndCompat">@drawable/selector_ic_arrow_down</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_white_normal_2</item>
+    </style>
+    <style name="StyleButton.Camera" parent="">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">@dimen/dp12</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="srcCompat">@drawable/ic_camera</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_gray_none
+        </item>
+    </style>
+    <style name="StyleButton.Barcode" parent="">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">@dimen/dp12</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="srcCompat">@drawable/ic_barcode</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_gray_none
+        </item>
+    </style>
+    <style name="StyleButton.MainSecondMenu" parent="StyleTextView.Bold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@color/dark</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_white_none_2</item>
+    </style>
+    <style name="StyleButton.MainBottomTap" parent="StyleTextView.Regular">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:textSize">@dimen/dp12</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:background">@drawable/selector_rectangle_none_white_none
+        </item>
+    </style>
+    <style name="StyleButton.SalesHistory" parent="StyleTextView.Regular.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_3873d8_none</item>
+    </style>
+    <style name="StyleButton.Inspection.Contents.Dialog.None" parent="StyleTextView.Bold.Medium">
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_gray_none</item>
+    </style>
+    <style name="StyleButton.Inspection.Contents.Dialog.Good" parent="StyleTextView.Bold.Medium">
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_good_none</item>
+    </style>
+    <style name="StyleButton.Inspection.Contents.Dialog.Average" parent="StyleTextView.Bold.Medium">
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_average_none</item>
+    </style>
+    <style name="StyleButton.Inspection.Contents.Dialog.RepairNeeded" parent="StyleTextView.Bold.Medium">
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_repairneeded_none</item>
+    </style>
+    <style name="StyleButton.Inspection.Contents.Dialog.SelectionCancelled" parent="StyleTextView.Bold.Medium">
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:textColor">@drawable/selector_color_gray_white</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_white_gray</item>
+    </style>
+
+    <!-- RadioButton Style. -->
+    <style name="StyleRadioButton.Bold.Medium.Stroke.Corners.White" parent="StyleTextView.Bold.Medium">
+        <item name="android:button">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="colorControlNormal">@color/transparent</item>
+        <item name="colorControlActivated">@color/transparent</item>
+        <item name="colorControlHighlight">@color/transparent</item>
+        <item name="android:textColor">@drawable/selector_color_gray_primary</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_white_gray_2</item>
+    </style>
+    <style name="StyleRadioButton.Bold.Medium.Stroke.Corners.White.Begin" parent="StyleTextView.Bold.Medium">
+        <item name="android:button">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="colorControlNormal">@color/transparent</item>
+        <item name="colorControlActivated">@color/transparent</item>
+        <item name="colorControlHighlight">@color/transparent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:background">@drawable/selector_rectangle_4dpstart_white_none
+        </item>
+    </style>
+    <style name="StyleRadioButton.Bold.Medium.Stroke.Corners.White.Middle" parent="StyleTextView.Bold.Medium">
+        <item name="android:button">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="colorControlNormal">@color/transparent</item>
+        <item name="colorControlActivated">@color/transparent</item>
+        <item name="colorControlHighlight">@color/transparent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:background">@drawable/selector_rectangle_none_white_none_2</item>
+    </style>
+    <style name="StyleRadioButton.Bold.Medium.Stroke.Corners.White.End" parent="StyleTextView.Bold.Medium">
+        <item name="android:button">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="colorControlNormal">@color/transparent</item>
+        <item name="colorControlActivated">@color/transparent</item>
+        <item name="colorControlHighlight">@color/transparent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:background">@drawable/selector_rectangle_4dpend_white_none
+        </item>
+    </style>
+    <style name="StyleTabButton.Bold.Medium.Corners" parent="StyleTextView.Bold.Medium">
+        <item name="android:button">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="colorControlNormal">@color/transparent</item>
+        <item name="colorControlActivated">@color/transparent</item>
+        <item name="colorControlHighlight">@color/transparent</item>
+        <item name="android:textColor">@drawable/selector_color_black_white</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp8</item>
+        <item name="android:paddingEnd">@dimen/dp8</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_none_none</item>
+    </style>
+    <style name="StyleTabButton.Bold.Medium.Corners.Tab" parent="StyleTextView.Bold.Medium">
+        <item name="android:button">@null</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="colorControlNormal">@color/transparent</item>
+        <item name="colorControlActivated">@color/transparent</item>
+        <item name="colorControlHighlight">@color/transparent</item>
+        <item name="android:textColor">@drawable/selector_color_gray_white</item>
+        <item name="android:paddingTop">@dimen/dp8</item>
+        <item name="android:paddingBottom">@dimen/dp8</item>
+        <item name="android:paddingStart">@dimen/dp8</item>
+        <item name="android:paddingEnd">@dimen/dp8</item>
+        <item name="android:background">@drawable/selector_rectangle_4dp_none_none</item>
+    </style>
+    <!-- Toggle Button. -->
+    <style name="StyleToggleButton.ExtraBold.Medium.Primary" parent="StyleTextView.ExtraBold.Medium">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingTop">@dimen/dp4</item>
+        <item name="android:paddingStart">@dimen/dp16</item>
+        <item name="android:paddingEnd">@dimen/dp16</item>
+        <item name="android:paddingBottom">@dimen/dp4</item>
+        <item name="android:textColor">@drawable/selector_color_white_accent</item>
+        <item name="android:background">@drawable/selector_rectangle_none_primary_none</item>
+    </style>
+
+    <!-- CheckBox Style. -->
+    <style name="StyleCheckBox.Bold.Medium.Normal.Primary" parent="StyleTextView.Bold.Medium.Normal.Primary">
+        <item name="colorControlNormal">@color/normal</item>
+        <item name="colorControlActivated">@color/primary</item>
+    </style>
+
+    <!-- ShapeAppearanceOverlay Style. -->
+    <style name="ShapeAppearanceOverlay.CornerSize8" parent="">
+        <item name="cornerSize">8%</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.CornerSize50" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>
