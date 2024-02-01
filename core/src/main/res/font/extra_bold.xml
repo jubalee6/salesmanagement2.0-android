@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- Regular. -->
+    <!--<font
+        app:font="@font/nanum_square_neo_brg"
+        app:fontWeight="400"
+        />-->
+    <!-- Bold. -->
+    <!--<font
+        app:font="@font/nanum_square_neo_cbd"
+        app:fontWeight="700"
+        />-->
+    <!-- Extra Bold. -->
+    <font
+        app:font="@font/nanum_square_neo_deb"
+        app:fontWeight="900"
+        />
+</font-family>

@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">salesmanagement</string>
+    <string name="app_name">영업관리</string>
+
+    <!--인증-->
+    <string name="auth_title">인증</string>
+    <string name="auth_mobile_number">휴대폰번호</string>
+    <string name="auth_auth_number">인증번호</string>
+    <string name="auth_auth_number_hint">인증번호(숫자5자리)</string>
+
+
 </resources>

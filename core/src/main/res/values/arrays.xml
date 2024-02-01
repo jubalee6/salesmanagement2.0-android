@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="medium_autosize_text_sizes">
+        <item>@dimen/dp12</item>
+        <item>@dimen/dp13</item>
+        <item>@dimen/dp14</item>
+        <item>@dimen/dp15</item>
+    </array>
+</resources>

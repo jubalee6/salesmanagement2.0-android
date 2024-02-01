@@ -1,0 +1,45 @@
+package com.intravan.salesmanagement.core.presentation.base
+
+import android.os.Bundle
+import android.view.*
+import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
+
+/**
+ * Base ViewBinding Fragment.
+ */
+abstract class BaseViewBindingFragment<T : ViewBinding> : Fragment() {
+
+    // Binding.
+    private var _binding: T? = null
+    val binding get() = _binding!!
+
+    // ViewBinding.
+    abstract fun fragmentBinding(inflater: LayoutInflater, container: ViewGroup?): T
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = fragmentBinding(inflater, container)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initScreen(view, savedInstanceState)
+        initObserver()
+        initListener()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    protected abstract fun initScreen(view: View, savedInstanceState: Bundle?)
+    protected abstract fun initObserver()
+    protected abstract fun initListener()
+}
