@@ -2,8 +2,8 @@
 <resources>
     <!-- . -->
     <color name="primary">#4fbc84</color>
+    <color name="primary_dark">#408C65</color>
     <color name="primary_neo">#4287FF</color>
-    <color name="primary_dark">#3873D8</color>
     <color name="primary_light">#679fff</color>
     <!--<color name="secondary">#FF8324</color>
     <color name="secondary_dark">#E85215</color>

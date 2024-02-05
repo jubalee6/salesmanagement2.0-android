@@ -2,7 +2,6 @@ package com.intravan.salesmanagement.core.presentation.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 
 /**
@@ -10,7 +9,7 @@ import androidx.viewbinding.ViewBinding
  */
 abstract class BaseViewBindingActivity<T : ViewBinding>(
     val bindingFactory: (LayoutInflater) -> T
-) : AppCompatActivity() {
+) : BaseLifecycleLogActivity() {
 
     // Binding.
     private var _binding: T? = null
