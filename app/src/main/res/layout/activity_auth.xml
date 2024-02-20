@@ -17,4 +17,5 @@
         app:defaultNavHost="false"
         app:navGraph="@navigation/nav_auth"
         />
+
 </FrameLayout>

@@ -12,8 +12,11 @@ import javax.annotation.concurrent.Immutable
 @Immutable
 @Parcelize
 data class AuthUiState(
-    val states: Int = LOADING
+    val states: Int = NONE,
+    val display: AuthDisplayable = AuthDisplayable(),
+    val message: String = ""
 ) : Parcelable {
+
     val isLoading: Boolean
         get() = states and LOADING == LOADING
 
