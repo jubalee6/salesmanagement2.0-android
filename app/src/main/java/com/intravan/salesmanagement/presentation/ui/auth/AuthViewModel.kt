@@ -22,20 +22,20 @@ import javax.inject.Inject
 class AuthViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     initialState: AuthUiState
-) : BaseViewModel<AuthUiState,PartialState, AuthEvent, AuthIntent>(
+) : BaseViewModel<AuthUiState, PartialState, AuthEvent, AuthIntent>(
     savedStateHandle,
     initialState
 ) {
-    override fun mapIntents(intent: AuthIntent): Flow<PartialState> = when(intent){
-            is AuthIntent.GetAuthNumberClicked -> getAuthNumberClicked(intent.display)
-            is AuthIntent.VerifyAuthClicked -> verifyAuthClicked(intent.display)
+    override fun mapIntents(intent: AuthIntent): Flow<PartialState> = when (intent) {
+        is AuthIntent.GetAuthNumberClicked -> getAuthNumberClicked(intent.display)
+        is AuthIntent.VerifyAuthClicked -> verifyAuthClicked(intent.display)
 
     }
 
     override fun reduceUiState(
         uiState: AuthUiState,
         partial: PartialState
-    ): AuthUiState = when(partial){
+    ): AuthUiState = when (partial) {
         is PartialState.Loading -> uiState.copy(
             states = LOADING or partial.states,
             display = uiState.display.copy(
@@ -43,24 +43,24 @@ class AuthViewModel @Inject constructor(
             ),
             message = ""
         )
+
         is PartialState.Fetched -> uiState.copy(
             states = FETCHED,
             display = partial.display,
             message = partial.message
         )
+
         is PartialState.Error -> uiState.copy(
             states = ERROR,
-            message = partial.throwable.message?:""
+            message = partial.throwable.message ?: ""
         )
     }
 
     private fun getAuthNumberClicked(display: AuthDisplayable): Flow<PartialState> = flow {
     }
 
-    private fun verifyAuthClicked(display:AuthDisplayable): Flow<PartialState> = flow {
+    private fun verifyAuthClicked(display: AuthDisplayable): Flow<PartialState> = flow {
     }
-
-
 
 
 }

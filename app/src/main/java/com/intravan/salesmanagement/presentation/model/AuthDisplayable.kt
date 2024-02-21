@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class AuthDisplayable (
+data class AuthDisplayable(
     val isCheckNum: Boolean = false,
     val responseAuthNumber: String = "",
     val mobileNumber: String = ""
