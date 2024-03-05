@@ -19,7 +19,7 @@
         />
     <!--휴대폰 번호-->
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textview_mobile_number"
+        android:id="@+id/textview_phone_number"
         style="@style/StyleTextView.Regular.Small.Label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textview_title"
         />
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edittext_mobile_number"
+        android:id="@+id/edittext_phone_number"
         style="@style/StyleEditText.Bold.Medium.Stroke.Corners.White"
         android:layout_width="@dimen/dp0"
         android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
         android:nextFocusDown="@id/edittext_auth_number"
         app:layout_constraintEnd_toStartOf="@+id/button_send_auth_number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_mobile_number"
+        app:layout_constraintTop_toBottomOf="@+id/textview_phone_number"
         app:layout_goneMarginEnd="0dp"
         />
     <androidx.appcompat.widget.AppCompatButton
@@ -58,10 +58,10 @@
         android:layout_marginHorizontal="@dimen/dp16"
         android:gravity="center"
         android:text="@string/auth_auth_number"
-        app:layout_constraintBottom_toBottomOf="@+id/edittext_mobile_number"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_phone_number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/edittext_mobile_number"
-        app:layout_constraintTop_toTopOf="@+id/edittext_mobile_number"
+        app:layout_constraintStart_toEndOf="@+id/edittext_phone_number"
+        app:layout_constraintTop_toTopOf="@+id/edittext_phone_number"
         />
     <ProgressBar
         android:id="@+id/progressbar_send_auth_number"
@@ -84,7 +84,7 @@
         android:layout_marginTop="@dimen/dp16"
         android:text="@string/auth_auth_number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_mobile_number"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_phone_number"
         />
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edittext_auth_number"

@@ -2,17 +2,21 @@ package com.intravan.salesmanagement.presentation.ui.auth
 
 import androidx.lifecycle.SavedStateHandle
 import com.intravan.salesmanagement.core.presentation.viewmodel.BaseViewModel
+import com.intravan.salesmanagement.domain.usecase.GetAuthNumberUseCase
+import com.intravan.salesmanagement.mapper.toDomainModel
+import com.intravan.salesmanagement.mapper.toPresentationModel
 import com.intravan.salesmanagement.presentation.model.AuthDisplayable
 import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.Companion.ERROR
 import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.Companion.FETCHED
 import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.Companion.GET_AUTH_NUMBER
 import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.Companion.LOADING
-import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.Companion.VERIFY_AUTH
-import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.Companion.VERIFY_ID
 import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.PartialState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 /**
@@ -20,6 +24,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class AuthViewModel @Inject constructor(
+    private val getAuthNumberUseCase: GetAuthNumberUseCase,
     savedStateHandle: SavedStateHandle,
     initialState: AuthUiState
 ) : BaseViewModel<AuthUiState, PartialState, AuthEvent, AuthIntent>(
@@ -57,10 +62,32 @@ class AuthViewModel @Inject constructor(
     }
 
     private fun getAuthNumberClicked(display: AuthDisplayable): Flow<PartialState> = flow {
+        if (display.phoneNumber.isBlank()) {
+            publishEvent(AuthEvent.ErrorEmptyMobileNumber)
+            return@flow
+        } else if (display.phoneNumber.length < 10) {
+            publishEvent(AuthEvent.ErrorMobileNumberLength)
+            return@flow
+        }
+        getAuthNumberUseCase
+            .execute(display.toDomainModel())
+            .flowOn(Dispatchers.IO)
+            .onStart {
+                emit(PartialState.Loading(GET_AUTH_NUMBER))
+            }
+            .collect { result ->
+                result
+                    .onSuccess {
+                        emit(PartialState.Fetched(it.value.toPresentationModel(), it.message))
+                    }
+                    .onFailure {
+                        emit(PartialState.Error(it))
+                    }
+            }
     }
-
-    private fun verifyAuthClicked(display: AuthDisplayable): Flow<PartialState> = flow {
-    }
-
-
 }
+
+private fun verifyAuthClicked(display: AuthDisplayable): Flow<PartialState> = flow {
+}
+
+

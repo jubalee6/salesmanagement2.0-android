@@ -1,13 +1,10 @@
-package com.intravan.salesmanagement.presentation.model
+package com.intravan.salesmanagement.domain.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
-@Parcelize
-data class AuthDisplayable(
+data class Auth(
     val isCheckNum: Boolean = false,
     val responseAuthNumber: String = "",
     val phoneNumber: String = "",
     val mobileNumber: String = "",
     val authNumber: String = ""
-) : Parcelable
+
+)
