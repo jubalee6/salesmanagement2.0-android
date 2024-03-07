@@ -6,6 +6,10 @@
     <string name="auth_mobile_number">휴대폰번호</string>
     <string name="auth_auth_number">인증번호</string>
     <string name="auth_auth_number_hint">인증번호(숫자5자리)</string>
+    <string name="auth_error_mobile_number_empty">휴대폰번호가 비었습니다.</string>
+    <string name="auth_error_mobile_number_length">휴대폰번호를 확인하여 주십시오.</string>
+    <string name="auth_error_auth_number_length">인증번호를 확인하여 주십시오.</string>
+    <string name="auth_error_auth_number_empty">인증번호가 비었습니다.</string>
 
     <!--메인화면-->
     <string name="main_menu_list">업체리스트</string>

@@ -2,7 +2,9 @@ package com.intravan.salesmanagement.presentation.ui.auth
 
 import androidx.lifecycle.SavedStateHandle
 import com.intravan.salesmanagement.core.presentation.viewmodel.BaseViewModel
+import com.intravan.salesmanagement.core.util.DebugLog
 import com.intravan.salesmanagement.domain.usecase.GetAuthNumberUseCase
+import com.intravan.salesmanagement.domain.usecase.VerifyAuthUseCase
 import com.intravan.salesmanagement.mapper.toDomainModel
 import com.intravan.salesmanagement.mapper.toPresentationModel
 import com.intravan.salesmanagement.presentation.model.AuthDisplayable
@@ -25,6 +27,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     private val getAuthNumberUseCase: GetAuthNumberUseCase,
+    private val verifyAuthUseCase: VerifyAuthUseCase,
     savedStateHandle: SavedStateHandle,
     initialState: AuthUiState
 ) : BaseViewModel<AuthUiState, PartialState, AuthEvent, AuthIntent>(
@@ -61,11 +64,12 @@ class AuthViewModel @Inject constructor(
         )
     }
 
+    // 인증번호 가져오기 버튼.
     private fun getAuthNumberClicked(display: AuthDisplayable): Flow<PartialState> = flow {
-        if (display.phoneNumber.isBlank()) {
+        if (display.mobileNumber.isBlank()) {
             publishEvent(AuthEvent.ErrorEmptyMobileNumber)
             return@flow
-        } else if (display.phoneNumber.length < 10) {
+        } else if (display.mobileNumber.length < 10) {
             publishEvent(AuthEvent.ErrorMobileNumberLength)
             return@flow
         }
@@ -85,9 +89,16 @@ class AuthViewModel @Inject constructor(
                     }
             }
     }
+
+    // 인증번호 확인 버튼.
+    private fun verifyAuthClicked(display: AuthDisplayable): Flow<PartialState> = flow {
+        if (display.responseAuthNumber == display.authNumber) {
+            publishEvent(AuthEvent.NavigateToMain)
+        } else if (display.authNumber.length != 5) {
+            publishEvent(AuthEvent.ErrorAuthNumberLength)
+        } else if (display.authNumber.isBlank()) {
+            publishEvent(AuthEvent.ErrorIncorrectAuthNumber)
+        }
+            DebugLog.e { "<<<<<<<<<verifyAuthClicked: ${publishEvent(AuthEvent.NavigateToMain)}" }
+    }
 }
-
-private fun verifyAuthClicked(display: AuthDisplayable): Flow<PartialState> = flow {
-}
-
-

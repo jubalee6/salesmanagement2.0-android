@@ -44,6 +44,20 @@ fun FragmentActivity.repeatOnStarted(block: suspend CoroutineScope.() -> Unit) {
     }
 
 }
+
+fun Activity.showNotifyAlert(
+    @StringRes messageId: Int,
+    @StringRes titleId: Int = R.string.ivcore_text_notify,
+    isCancelable: Boolean = true
+) {
+    showCustomAlert {
+        setTitle(titleId)
+        setMessage(messageId)
+        setCancelable(isCancelable)
+        positiveButton(R.string.ivcore_text_confirm) { }
+    }
+}
+
 fun Activity.showNotifyAlert(
     message: CharSequence?,
     @StringRes titleId: Int = R.string.ivcore_text_notify,
@@ -56,6 +70,7 @@ fun Activity.showNotifyAlert(
         positiveButton(R.string.ivcore_text_confirm) { }
     }
 }
+
 inline fun Activity.showCustomAlert(customAlertDialog: CustomAlertDialog.Builder.() -> Unit) {
 
     if (!isFinishing) {

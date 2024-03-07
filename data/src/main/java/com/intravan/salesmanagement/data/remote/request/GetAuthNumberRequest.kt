@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class GetAuthNumberRequest(
     @SerialName("hp")
-    val phoneNumber: String = "",
+    val mobileNumber: String = "",
     @SerialName("mobileno")
-    val mobileNumber: String = ""
+    val uuid: String = ""
 )

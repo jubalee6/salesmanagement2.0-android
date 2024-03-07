@@ -8,4 +8,9 @@ interface AuthRepository {
 
     // 인증번호 요청.
     fun getAuthNumber(auth: Auth): Flow<Resource<Auth>>
+
+    // 인증번호 확인.
+    fun verifyAuth(auth: Auth): Flow<Resource<Auth>>
+
+
 }

@@ -7,7 +7,8 @@ import kotlinx.parcelize.Parcelize
 data class AuthDisplayable(
     val isCheckNum: Boolean = false,
     val responseAuthNumber: String = "",
-    val phoneNumber: String = "",
     val mobileNumber: String = "",
-    val authNumber: String = ""
+    val uuid: String = "",
+    val authNumber: String = "",
+    val newWriteAuthNumber: String = ""
 ) : Parcelable

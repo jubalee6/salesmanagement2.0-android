@@ -13,22 +13,23 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class MainFragment : BaseViewBindingFragment<FragmentMainBinding>(){
+
     override fun fragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentMainBinding {
-        TODO("Not yet implemented")
-    }
+    ) = FragmentMainBinding.inflate(
+        inflater, container,false
+    )
 
-    override fun initListener() {
-        TODO("Not yet implemented")
+    override fun initScreen(view: View, savedInstanceState: Bundle?) {
+
     }
 
     override fun initObserver() {
-        TODO("Not yet implemented")
+
     }
 
-    override fun initScreen(view: View, savedInstanceState: Bundle?) {
-        TODO("Not yet implemented")
+    override fun initListener() {
+
     }
 }

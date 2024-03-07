@@ -30,6 +30,23 @@ inline fun Fragment.repeatOnStarted(crossinline block: suspend CoroutineScope.()
         }
     }
 }
+
+fun Fragment.showErrorAlert(
+    message: CharSequence?,
+    @StringRes titleId: Int = R.string.ivcore_text_error,
+    isCancelable: Boolean = true
+) {
+    activity?.showNotifyAlert(message, titleId, isCancelable)
+}
+
+fun Fragment.showNotifyAlert(
+    @StringRes messageId: Int,
+    @StringRes titleId: Int = R.string.ivcore_text_notify,
+    isCancelable: Boolean = true
+) {
+    activity?.showNotifyAlert(messageId, titleId, isCancelable)
+}
+
 fun Fragment.showNotifyAlert(
     message: CharSequence?,
     @StringRes titleId: Int = R.string.ivcore_text_notify,

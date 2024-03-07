@@ -18,4 +18,10 @@ class AuthRepositoryImpl @Inject constructor(
             emit(this)
         }
     }
+
+    override fun verifyAuth(auth: Auth): Flow<Resource<Auth>> = flow{
+        authRemoteDataSource.verifyAuth(auth).run {
+            emit(this)
+        }
+    }
 }

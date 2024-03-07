@@ -7,6 +7,7 @@ import com.intravan.salesmanagement.core.util.Resource
 import com.intravan.salesmanagement.data.mapper.toDomainModel
 import com.intravan.salesmanagement.data.mapper.toSendAuthNumberRequest
 import com.intravan.salesmanagement.data.remote.api.IntravanApi
+import com.intravan.salesmanagement.data.remote.request.GetAuthNumberRequest
 import com.intravan.salesmanagement.domain.datasource.local.PreferencesLocalDataSource
 import com.intravan.salesmanagement.domain.datasource.remote.AuthRemoteDataSource
 import com.intravan.salesmanagement.domain.model.Auth
@@ -22,10 +23,12 @@ class AuthRemoteDataSourceImpl @Inject constructor(
 
     // 인증번호 요청.
     override suspend fun getAuthNumber(auth: Auth): Resource<Auth> {
-        val request = auth.toSendAuthNumberRequest()
-            .let {
-                json.encodeToString(it)
-            }
+        val request = GetAuthNumberRequest(
+            mobileNumber = auth.mobileNumber,
+            uuid = preferences.uuid
+        ).let {
+            json.encodeToString(it)
+        }
         intravanApi
             .getAuthNumber(request)
             .let {
@@ -36,5 +39,10 @@ class AuthRemoteDataSourceImpl @Inject constructor(
             .run {
                 return this
             }
+    }
+
+    // 인증번호 확인.
+    override suspend fun verifyAuth(auth: Auth): Resource<Auth> {
+        TODO("Not yet implemented")
     }
 }
