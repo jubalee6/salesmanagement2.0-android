@@ -101,9 +101,9 @@ class AuthFragment : BaseViewBindingFragment<FragmentAuthBinding>() {
             }
             // 인증번호 노출.
             // debug 상태에서만 인증번호 값이 리턴 됨.
-            /*  if (it.display.responseAuthNumber.isNotBlank()) {
-                  binding.edittextAuthNumber.setText(it.display.responseAuthNumber)
-              }*/
+            if (it.display.responseAuthNumber.isNotBlank()) {
+                binding.edittextAuthNumber.setText(it.display.responseAuthNumber)
+            }
         }
     }
 

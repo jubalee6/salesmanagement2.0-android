@@ -10,5 +10,4 @@ data class AuthDisplayable(
     val mobileNumber: String = "",
     val uuid: String = "",
     val authNumber: String = "",
-    val newWriteAuthNumber: String = ""
 ) : Parcelable
