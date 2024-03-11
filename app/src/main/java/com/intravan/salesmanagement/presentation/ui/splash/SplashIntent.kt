@@ -1,4 +1,7 @@
 package com.intravan.salesmanagement.presentation.ui.splash
 
-class SplashIntent {
+sealed class SplashIntent {
+
+    data object BeginScreen : SplashIntent()
+
 }

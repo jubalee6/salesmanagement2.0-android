@@ -19,7 +19,8 @@ data class SplashUiState(
     sealed class PartialState {
         object Loading : PartialState()
         data class Fetched(
-            val display: SplashDisplayable, val message: String = ""
+            val display: SplashDisplayable,
+            val message: String = ""
         ) : PartialState()
 
         data class Error(
