@@ -60,7 +60,15 @@ class AuthFragment : BaseViewBindingFragment<FragmentAuthBinding>() {
         binding.buttonCheckAuth.setOnClickListener {
             hideSoftInput()
             viewModel.acceptIntent(AuthIntent.VerifyAuthClicked(binding.toPresentationModel()))
-            DebugLog.e { "<<<<<<<<<<buttonCheck:${viewModel.acceptIntent(AuthIntent.VerifyAuthClicked(binding.toPresentationModel()))}" }
+            DebugLog.e {
+                "<<<<<<<<<<buttonCheck:${
+                    viewModel.acceptIntent(
+                        AuthIntent.VerifyAuthClicked(
+                            binding.toPresentationModel()
+                        )
+                    )
+                }"
+            }
         }
     }
 
@@ -71,15 +79,19 @@ class AuthFragment : BaseViewBindingFragment<FragmentAuthBinding>() {
                 is AuthEvent.NavigateToMain -> {
                     activity?.launchActivityWithClearTop(MainActivity::class.java)
                 }
+
                 is AuthEvent.ErrorMobileNumberLength -> {
                     showNotifyAlert(R.string.auth_error_mobile_number_length)
                 }
+
                 is AuthEvent.ErrorAuthNumberLength -> {
                     showNotifyAlert(R.string.auth_error_auth_number_length)
                 }
+
                 is AuthEvent.ErrorEmptyMobileNumber -> {
                     showNotifyAlert(R.string.auth_error_mobile_number_empty)
                 }
+
                 is AuthEvent.ErrorIncorrectAuthNumber -> {
                     showNotifyAlert(R.string.auth_error_auth_number_empty)
                 }
@@ -99,11 +111,11 @@ class AuthFragment : BaseViewBindingFragment<FragmentAuthBinding>() {
             if (it.message.isNotBlank()) {
                 showNotifyAlert(it.message)
             }
-            // 인증번호 노출.
+            /*// 인증번호 노출.
             // debug 상태에서만 인증번호 값이 리턴 됨.
             if (it.display.responseAuthNumber.isNotBlank()) {
                 binding.edittextAuthNumber.setText(it.display.responseAuthNumber)
-            }
+            }*/
         }
     }
 

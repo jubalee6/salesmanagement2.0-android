@@ -92,13 +92,23 @@ class AuthViewModel @Inject constructor(
 
     // 인증번호 확인 버튼.
     private fun verifyAuthClicked(display: AuthDisplayable): Flow<PartialState> = flow {
-        if (display.responseAuthNumber == display.authNumber) {
-            publishEvent(AuthEvent.NavigateToMain)
+        if (display.mobileNumber.isBlank()) {
+            publishEvent(AuthEvent.ErrorEmptyMobileNumber)
+            DebugLog.e { "<<<<<<<<<<<<Click${display.mobileNumber}" }
+            return@flow
         } else if (display.authNumber.length != 5) {
             publishEvent(AuthEvent.ErrorAuthNumberLength)
+            return@flow
         } else if (display.authNumber.isBlank()) {
             publishEvent(AuthEvent.ErrorIncorrectAuthNumber)
+            return@flow
+        } else if (display.mobileNumber.isBlank()) {
+            publishEvent(AuthEvent.ErrorEmptyMobileNumber)
+            return@flow
+        } else if (display.responseAuthNumber == display.authNumber) {
+            publishEvent(AuthEvent.NavigateToMain)
+            return@flow
         }
-            DebugLog.e { "<<<<<<<<<verifyAuthClicked: ${publishEvent(AuthEvent.NavigateToMain)}" }
+        DebugLog.e { "<<<<<<<<<verifyAuthClicked: ${publishEvent(AuthEvent.NavigateToMain)}" }
     }
 }

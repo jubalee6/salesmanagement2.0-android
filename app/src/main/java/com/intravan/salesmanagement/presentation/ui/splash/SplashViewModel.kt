@@ -1,6 +1,7 @@
 package com.intravan.salesmanagement.presentation.ui.splash
 
 import androidx.lifecycle.SavedStateHandle
+import com.intravan.salesmanagement.domain.usecase.BeginSplashScreenUseCase
 import com.intravan.salesmanagement.presentation.viewmodel.AnalyticsViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -12,7 +13,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-
+    private val beginSplashScreenUseCase: BeginSplashScreenUseCase,
     savedStateHandle: SavedStateHandle,
     initialState: SplashUiState
 ) : AnalyticsViewModel<SplashUiState, SplashUiState.PartialState, SplashEvent, SplashIntent>(
@@ -53,6 +54,8 @@ class SplashViewModel @Inject constructor(
     }
 
     private fun beginScreen(): Flow<SplashUiState.PartialState> = flow {
+        beginSplashScreenUseCase
+
 
     }
 
