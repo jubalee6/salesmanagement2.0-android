@@ -4,8 +4,12 @@ import androidx.lifecycle.SavedStateHandle
 import com.intravan.salesmanagement.domain.usecase.BeginSplashScreenUseCase
 import com.intravan.salesmanagement.presentation.viewmodel.AnalyticsViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 /**
@@ -55,8 +59,16 @@ class SplashViewModel @Inject constructor(
 
     private fun beginScreen(): Flow<SplashUiState.PartialState> = flow {
         beginSplashScreenUseCase
-
-
+            .execute()
+            .flowOn(Dispatchers.Default)
+            .onStart {
+                emit(SplashUiState.PartialState.Loading)
+            }
+            .collect { result ->
+                result
+                    .onSuccess { }
+                    .onFailure { }
+            }
     }
 
 }
