@@ -38,4 +38,12 @@ class PreferencesLocalDataSourceImpl @Inject constructor(
             editor.putString("baseUrl", value)
             editor.apply()
         }
+
+    override var isAuthenticated: Boolean
+        get() = preferences.getBoolean("isAuthenticated", false)
+        set(value) {
+            val editor = preferences.edit()
+            editor.putBoolean("isAuthenticated", value)
+            editor.apply()
+        }
 }

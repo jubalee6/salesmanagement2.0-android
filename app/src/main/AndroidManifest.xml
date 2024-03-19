@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     >
-
     <!-- 네트워크 사용. -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -23,7 +22,7 @@
         tools:targetApi="tiramisu"
         >
         <activity
-            android:name=".presentation.ui.auth.AuthActivity"
+            android:name=".presentation.ui.splash.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Salesmanagement"
@@ -36,11 +35,16 @@
         </activity>
 
         <activity
+            android:name=".presentation.ui.auth.AuthActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Salesmanagement"
+            />
+        <activity
             android:name=".presentation.ui.main.MainActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Salesmanagement"
             />
     </application>
-
 </manifest>

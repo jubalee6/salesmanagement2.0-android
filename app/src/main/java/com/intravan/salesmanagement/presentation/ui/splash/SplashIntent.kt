@@ -4,4 +4,6 @@ sealed class SplashIntent {
 
     data object BeginScreen : SplashIntent()
 
+    data object Starting : SplashIntent()
+
 }
