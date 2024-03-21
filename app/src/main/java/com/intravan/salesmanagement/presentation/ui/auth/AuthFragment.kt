@@ -61,13 +61,7 @@ class AuthFragment : BaseViewBindingFragment<FragmentAuthBinding>() {
             hideSoftInput()
             viewModel.acceptIntent(AuthIntent.VerifyAuthClicked(binding.toPresentationModel()))
             DebugLog.e {
-                "<<<<<<<<<<buttonCheck:${
-                    viewModel.acceptIntent(
-                        AuthIntent.VerifyAuthClicked(
-                            binding.toPresentationModel()
-                        )
-                    )
-                }"
+                "<<<<<<<<<<buttonCheck:${binding.toPresentationModel()}"
             }
         }
     }
@@ -92,8 +86,12 @@ class AuthFragment : BaseViewBindingFragment<FragmentAuthBinding>() {
                     showNotifyAlert(R.string.auth_error_mobile_number_empty)
                 }
 
-                is AuthEvent.ErrorIncorrectAuthNumber -> {
+                is AuthEvent.ErrorEmptyAuthNumber -> {
                     showNotifyAlert(R.string.auth_error_auth_number_empty)
+                }
+
+                is AuthEvent.ErrorIncorrectAuthNumber -> {
+                    showNotifyAlert(R.string.auth_error_auth_number_incorrect)
                 }
             }
         }
@@ -111,6 +109,7 @@ class AuthFragment : BaseViewBindingFragment<FragmentAuthBinding>() {
             if (it.message.isNotBlank()) {
                 showNotifyAlert(it.message)
             }
+
             /*// 인증번호 노출.
             // debug 상태에서만 인증번호 값이 리턴 됨.
             if (it.display.responseAuthNumber.isNotBlank()) {

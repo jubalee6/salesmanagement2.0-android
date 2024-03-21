@@ -32,6 +32,7 @@ class SplashViewModel @Inject constructor(
 ) {
     init {
         acceptIntent(SplashIntent.BeginScreen)
+        acceptIntent(SplashIntent.Starting)
     }
 
     override fun mapIntents(intent: SplashIntent): Flow<PartialState> =

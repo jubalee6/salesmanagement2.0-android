@@ -14,7 +14,7 @@ class StartingRepositoryImpl @Inject constructor(
     private val preferences: PreferencesLocalDataSource
 ): StartingRepository{
     // 어플리케이션 실행 시.
-   /* override fun starting(): Flow<Resource<Starting>> = flow {
+    override fun starting(): Flow<Resource<Starting>> = flow {
         // 초기정보.
         emit(
             Resource.success{
@@ -23,10 +23,5 @@ class StartingRepositoryImpl @Inject constructor(
                 )
             }
         )
-    }*/
-
-    override fun starting(): Flow<Resource<Starting>> = flow{
-
-
     }
 }

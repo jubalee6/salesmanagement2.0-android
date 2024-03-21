@@ -6,7 +6,6 @@ import androidx.activity.viewModels
 import com.intravan.salesmanagement.R
 import com.intravan.salesmanagement.core.extension.launchActivityWithClearTop
 import com.intravan.salesmanagement.core.extension.repeatOnStarted
-import com.intravan.salesmanagement.core.extension.showAlert
 import com.intravan.salesmanagement.core.extension.showCustomAlert
 import com.intravan.salesmanagement.core.presentation.base.BaseLifecycleLogActivity
 import com.intravan.salesmanagement.core.presentation.widget.positiveButton
@@ -15,7 +14,6 @@ import com.intravan.salesmanagement.presentation.ui.auth.AuthActivity
 import com.intravan.salesmanagement.presentation.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 
 /**
  * Splash.
@@ -50,6 +48,7 @@ class SplashActivity : BaseLifecycleLogActivity() {
                         DebugLog.e { "POSITIVEBUTTON FINISH ${finish()}" }
                     }
                 }
+
                 is SplashEvent.NavigateToAuth -> launchActivityWithClearTop(AuthActivity::class.java)
                 is SplashEvent.NavigateToMain -> launchActivityWithClearTop(MainActivity::class.java)
             }

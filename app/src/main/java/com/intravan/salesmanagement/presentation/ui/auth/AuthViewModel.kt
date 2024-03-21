@@ -4,7 +4,6 @@ import androidx.lifecycle.SavedStateHandle
 import com.intravan.salesmanagement.core.presentation.viewmodel.BaseViewModel
 import com.intravan.salesmanagement.core.util.DebugLog
 import com.intravan.salesmanagement.domain.usecase.GetAuthNumberUseCase
-import com.intravan.salesmanagement.domain.usecase.VerifyAuthUseCase
 import com.intravan.salesmanagement.mapper.toDomainModel
 import com.intravan.salesmanagement.mapper.toPresentationModel
 import com.intravan.salesmanagement.presentation.model.AuthDisplayable
@@ -27,7 +26,6 @@ import javax.inject.Inject
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     private val getAuthNumberUseCase: GetAuthNumberUseCase,
-    private val verifyAuthUseCase: VerifyAuthUseCase,
     savedStateHandle: SavedStateHandle,
     initialState: AuthUiState
 ) : BaseViewModel<AuthUiState, PartialState, AuthEvent, AuthIntent>(
@@ -90,25 +88,28 @@ class AuthViewModel @Inject constructor(
             }
     }
 
-    // 인증번호 확인 버튼.
-    private fun verifyAuthClicked(display: AuthDisplayable): Flow<PartialState> = flow {
-        if (display.mobileNumber.isBlank()) {
-            publishEvent(AuthEvent.ErrorEmptyMobileNumber)
-            DebugLog.e { "<<<<<<<<<<<<Click${display.mobileNumber}" }
-            return@flow
-        } else if (display.authNumber.length != 5) {
-            publishEvent(AuthEvent.ErrorAuthNumberLength)
-            return@flow
-        } else if (display.authNumber.isBlank()) {
-            publishEvent(AuthEvent.ErrorIncorrectAuthNumber)
-            return@flow
-        } else if (display.mobileNumber.isBlank()) {
-            publishEvent(AuthEvent.ErrorEmptyMobileNumber)
-            return@flow
-        } else if (display.responseAuthNumber == display.authNumber) {
-            publishEvent(AuthEvent.NavigateToMain)
-            return@flow
+    // 인증번호 확인.
+    private fun  verifyAuthClicked(display: AuthDisplayable): Flow<PartialState> = flow {
+        val authDomainModel = display.toDomainModel()
+        val responseAuthDomainModel = uiState.value.display
+        DebugLog.e { "<<<<<<authDomainModel : ${responseAuthDomainModel.responseAuthNumber}" }
+        when {
+            authDomainModel.mobileNumber.isBlank() -> {
+                publishEvent(AuthEvent.ErrorEmptyMobileNumber)
+            }
+
+            authDomainModel.authNumber.length < 5 -> {
+                publishEvent(AuthEvent.ErrorAuthNumberLength)
+            }
+
+            responseAuthDomainModel.responseAuthNumber != authDomainModel.authNumber -> {
+                publishEvent(AuthEvent.ErrorIncorrectAuthNumber)
+            }
+
+            else -> {
+                publishEvent(AuthEvent.NavigateToMain)
+                DebugLog.e { "<<<<<ResponseAuthNumber: ${responseAuthDomainModel.responseAuthNumber}, <<<<<<<AuthNumber: ${authDomainModel.authNumber}" }
+            }
         }
-        DebugLog.e { "<<<<<<<<<verifyAuthClicked: ${publishEvent(AuthEvent.NavigateToMain)}" }
     }
 }

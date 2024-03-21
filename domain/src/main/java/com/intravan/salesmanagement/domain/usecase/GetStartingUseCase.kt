@@ -2,6 +2,7 @@ package com.intravan.salesmanagement.domain.usecase
 
 import com.intravan.salesmanagement.core.extension.resultOf
 import com.intravan.salesmanagement.core.extension.toFailedThrowable
+import com.intravan.salesmanagement.core.util.DebugLog
 import com.intravan.salesmanagement.core.util.Resource
 import com.intravan.salesmanagement.domain.model.Starting
 import com.intravan.salesmanagement.domain.repository.StartingRepository
@@ -18,6 +19,9 @@ class GetStartingUseCase @Inject constructor(
         .starting()
         .map {
             resultOf { it }
+        }
+        .also {
+            DebugLog.e { "<<<<<<<<<it :$it" }
         }
         .catch {
             emit(Result.failure(it.toFailedThrowable()))

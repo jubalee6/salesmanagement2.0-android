@@ -2,10 +2,8 @@ package com.intravan.salesmanagement.data.datasource.remote
 
 import com.intravan.salesmanagement.core.di.DefaultJson
 import com.intravan.salesmanagement.core.extension.resourceOf
-import com.intravan.salesmanagement.core.extension.resultOf
 import com.intravan.salesmanagement.core.util.Resource
 import com.intravan.salesmanagement.data.mapper.toDomainModel
-import com.intravan.salesmanagement.data.mapper.toSendAuthNumberRequest
 import com.intravan.salesmanagement.data.remote.api.IntravanApi
 import com.intravan.salesmanagement.data.remote.request.GetAuthNumberRequest
 import com.intravan.salesmanagement.domain.datasource.local.PreferencesLocalDataSource
@@ -41,8 +39,4 @@ class AuthRemoteDataSourceImpl @Inject constructor(
             }
     }
 
-    // 인증번호 확인.
-    override suspend fun verifyAuth(auth: Auth): Resource<Auth> {
-        TODO("Not yet implemented")
-    }
 }
