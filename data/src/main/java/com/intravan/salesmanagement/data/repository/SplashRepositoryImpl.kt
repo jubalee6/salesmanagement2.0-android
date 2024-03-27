@@ -19,3 +19,5 @@ class SplashRepositoryImpl @Inject constructor(
             }
     }
 }
+// Bolean 값이 true일때 , main으로 넘어가게끔  -> success
+// Bolean 값이 false일때, 인증화면으로         -> Failure

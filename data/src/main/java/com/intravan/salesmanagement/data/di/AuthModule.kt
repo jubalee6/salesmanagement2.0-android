@@ -1,7 +1,9 @@
 package com.intravan.salesmanagement.data.di
 
+import com.intravan.salesmanagement.data.datasource.local.AuthLocalDataSourceImpl
 import com.intravan.salesmanagement.data.datasource.remote.AuthRemoteDataSourceImpl
 import com.intravan.salesmanagement.data.repository.AuthRepositoryImpl
+import com.intravan.salesmanagement.domain.datasource.local.AuthLocalDataSource
 import com.intravan.salesmanagement.domain.datasource.remote.AuthRemoteDataSource
 import com.intravan.salesmanagement.domain.repository.AuthRepository
 import com.intravan.salesmanagement.domain.usecase.*
@@ -23,6 +25,10 @@ object AuthModule {
         @Binds
         @Singleton
         fun bindAuthRepository(repositoryImpl: AuthRepositoryImpl): AuthRepository
+
+        @Binds
+        @Singleton
+        fun bindAuthLocalDataSource(dataSourceImpl: AuthLocalDataSourceImpl) : AuthLocalDataSource
 
 
         @Binds

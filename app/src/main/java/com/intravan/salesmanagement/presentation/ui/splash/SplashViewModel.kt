@@ -30,6 +30,7 @@ class SplashViewModel @Inject constructor(
     savedStateHandle,
     initialState
 ) {
+
     init {
         acceptIntent(SplashIntent.BeginScreen)
         acceptIntent(SplashIntent.Starting)
@@ -103,7 +104,6 @@ class SplashViewModel @Inject constructor(
                     .onFailure {
                         publishEvent(SplashEvent.StartingFailed(it.message ?: ""))
                     }
-
             }
     }
 }

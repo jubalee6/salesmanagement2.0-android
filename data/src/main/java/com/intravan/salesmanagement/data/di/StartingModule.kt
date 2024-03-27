@@ -19,5 +19,6 @@ object StartingModule {
         @Binds
         @Singleton
         fun bindStartingRepository(repositoryImpl: StartingRepositoryImpl): StartingRepository
+
     }
 }

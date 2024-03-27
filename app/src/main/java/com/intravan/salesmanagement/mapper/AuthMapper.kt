@@ -11,15 +11,19 @@ fun FragmentAuthBinding.toPresentationModel() = AuthDisplayable(
 )
 
 fun AuthDisplayable.toDomainModel() = Auth(
+    isAuthenticated = isAuthenticated,
     responseAuthNumber = responseAuthNumber,
     mobileNumber = mobileNumber,
     uuid = uuid,
-    authNumber = authNumber
+    authNumber = authNumber,
+    code = code
 )
 
 fun Auth.toPresentationModel() = AuthDisplayable(
+    isAuthenticated = isAuthenticated,
     responseAuthNumber = responseAuthNumber,
     mobileNumber = mobileNumber,
     uuid = uuid,
-    authNumber = authNumber
+    authNumber = authNumber,
+    code = code
 )

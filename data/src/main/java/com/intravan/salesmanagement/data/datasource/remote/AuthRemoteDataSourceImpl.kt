@@ -38,5 +38,4 @@ class AuthRemoteDataSourceImpl @Inject constructor(
                 return this
             }
     }
-
 }

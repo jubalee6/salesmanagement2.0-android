@@ -10,7 +10,8 @@ fun Auth.toSendAuthNumberRequest() = GetAuthNumberRequest(
 )
 
 fun AuthNumberResponse.toDomainModel(auth: Auth) = auth.copy(
-    responseAuthNumber = number
+    responseAuthNumber = number,
+    code = code
 )
 
 //fun Auth.toCheckAuthNumberRequest() =
