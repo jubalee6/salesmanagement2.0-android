@@ -11,13 +11,13 @@ import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.Companion.E
 import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.Companion.FETCHED
 import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.Companion.GET_AUTH_NUMBER
 import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.Companion.LOADING
-import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.Companion.VERIFY_AUTH
 import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.PartialState
-import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.PartialState.*
+import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.PartialState.Error
+import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.PartialState.Fetched
+import com.intravan.salesmanagement.presentation.ui.auth.AuthUiState.PartialState.Loading
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onStart
@@ -111,23 +111,16 @@ class AuthViewModel @Inject constructor(
             publishEvent(AuthEvent.ErrorIncorrectAuthNumber)
             return@flow
         }
+
+        // 인증 상태를 인증 완료로 처리.
+        // isAuthenticated = true
+        // code : ivcode 저장.
         verifyAuthUseCase
-            .execute(authDomainModel)
-            .flowOn(Dispatchers.IO)
-            .onStart {
-                emit(Loading(VERIFY_AUTH))
-            }
-            .collect { result ->
-                result.onSuccess {
-                    emit(Fetched(it.value.toPresentationModel(), it.message))
-                    publishEvent(AuthEvent.NavigateToMain)
-                }
-                    .onFailure {
-                        emit(Error(it))
-                    }
-            }
+            .execute(uiState.value.display.code)
+            publishEvent(AuthEvent.NavigateToMain)
     }
 }
+
 /*
     } else if (responseAuthDomainModel.responseAuthNumber != authDomainModel.authNumber) {
         publishEvent(AuthEvent.ErrorIncorrectAuthNumber)

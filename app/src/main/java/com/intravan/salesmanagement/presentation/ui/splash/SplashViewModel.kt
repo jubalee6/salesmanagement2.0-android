@@ -1,12 +1,9 @@
 package com.intravan.salesmanagement.presentation.ui.splash
 
 import androidx.lifecycle.SavedStateHandle
-import com.intravan.salesmanagement.core.util.DebugLog
 import com.intravan.salesmanagement.domain.usecase.BeginSplashScreenUseCase
-import com.intravan.salesmanagement.mapper.toDomainModel
-import com.intravan.salesmanagement.mapper.toPresentationModel
-import com.intravan.salesmanagement.presentation.model.SplashDisplayable
 import com.intravan.salesmanagement.presentation.ui.splash.SplashEvent.NavigateToMain
+import com.intravan.salesmanagement.presentation.ui.splash.SplashIntent.BeginScreen
 import com.intravan.salesmanagement.presentation.ui.splash.SplashUiState.PartialState
 import com.intravan.salesmanagement.presentation.ui.splash.SplashUiState.PartialState.Fetched
 import com.intravan.salesmanagement.presentation.viewmodel.AnalyticsViewModel
@@ -32,13 +29,12 @@ class SplashViewModel @Inject constructor(
 ) {
 
     init {
-        acceptIntent(beginScreen())
+        acceptIntent(BeginScreen)
     }
 
-    override fun mapIntents(intent: SplashIntent): Flow<PartialState> =
-        when (intent) {
-            is SplashIntent.BeginScreen -> beginScreen(intent.display)
-        }
+    override fun mapIntents(intent: SplashIntent): Flow<PartialState> = when (intent) {
+        is BeginScreen -> beginScreen()
+    }
 
     override fun reduceUiState(
         uiState: SplashUiState,
@@ -65,9 +61,9 @@ class SplashViewModel @Inject constructor(
     }
 
     // 화면시작.
-    private fun beginScreen(display: SplashDisplayable): Flow<PartialState> = flow {
+    private fun beginScreen(): Flow<PartialState> = flow {
         beginSplashScreenUseCase
-            .execute(display.toDomainModel())
+            .execute()
             .flowOn(Dispatchers.Default)
             .onStart {
                 emit(PartialState.Loading)
@@ -75,15 +71,14 @@ class SplashViewModel @Inject constructor(
             .collect { result ->
                 result
                     .onSuccess {
-                        emit(Fetched(it.value.toPresentationModel()))
-                        when {
-                            it.value.isAuthenticated -> publishEvent(NavigateToMain)
-                            else -> publishEvent(SplashEvent.NavigateToAuth)
+                        if(it.value) {
+                            publishEvent(NavigateToMain)
+                        }else{
+                            publishEvent(SplashEvent.NavigateToAuth)
                         }
-                        DebugLog.e { "CLICK AUTH -> >>>>>>>${publishEvent(NavigateToMain)}" }
-                        DebugLog.e { "CLICK AUTH -> >>>>>>>${publishEvent(SplashEvent.NavigateToAuth)}" }
                     }
-                    .onFailure { publishEvent(SplashEvent.StartingFailed(it.message ?: ""))}
+                    .onFailure { publishEvent(SplashEvent.StartingFailed(it.message ?: "")) }
             }
     }
 }
+

@@ -42,7 +42,7 @@ class SplashActivity : BaseLifecycleLogActivity() {
             when (event) {
                 is SplashEvent.StartingFailed -> showCustomAlert {
                     setTitle(R.string.text_notify)
-                    setMessage(event.failedMessage)
+                    setMessage(com.intravan.salesmanagement.core.R.string.ivcore_this_auth_cannot_used)
                     positiveButton {
                         finish()
                         DebugLog.e { "POSITIVEBUTTON FINISH ${finish()}" }

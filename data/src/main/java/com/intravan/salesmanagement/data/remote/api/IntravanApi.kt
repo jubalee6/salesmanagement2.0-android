@@ -23,7 +23,7 @@ interface IntravanApi {
 
     // 인증 체크후 메인.
     @FormUrlEncoded
-    @POST("intra/int_luse{extension")
+    @POST("intra/int_luse{extension}")
     suspend fun getStarting(
         @Field(API_POST_FIELD) params: String,
         @Path("extension") extension: String = ".aspx"

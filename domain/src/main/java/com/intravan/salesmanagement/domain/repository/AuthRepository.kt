@@ -10,5 +10,5 @@ interface AuthRepository {
     fun getAuthNumber(auth: Auth): Flow<Resource<Auth>>
 
     // 인증 확인.
-    fun verifyAuth(auth: Auth) : Flow<Resource<Auth>>
+    fun verifyAuth(code:String)
 }

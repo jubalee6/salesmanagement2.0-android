@@ -10,4 +10,7 @@ interface PreferencesLocalDataSource {
 
     // Host.
     var baseUrl: String
+
+    // ivcode.
+    var code : String
 }

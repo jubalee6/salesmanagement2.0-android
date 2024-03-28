@@ -46,4 +46,12 @@ class PreferencesLocalDataSourceImpl @Inject constructor(
             editor.putBoolean("isAuthenticated", value)
             editor.apply()
         }
+
+    override var code: String
+        get() = preferences.getString("code", "") ?: ""
+        set(value) {
+            val editor = preferences.edit()
+            editor.putString("code", value)
+            editor.apply()
+        }
 }

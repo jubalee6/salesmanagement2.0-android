@@ -86,5 +86,6 @@
     <string name="ivcore_text_application_close">종료 하려면 이전 버튼을 한 번 더 누르세요.</string>
     <string name="ivcore_text_call_error_string">전화번호(%s)가 올바르지 않습니다.</string>
     <string name="ivcore_this_terminal_cannot_used">이용할 수 없는 단말입니다.</string>
+    <string name="ivcore_this_auth_cannot_used">인증되지 않은 회원입니다.</string>
     <string name="ivcore_text_unknown_error">Unknown Error</string>
 </resources>
