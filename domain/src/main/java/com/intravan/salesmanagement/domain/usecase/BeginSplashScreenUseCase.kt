@@ -2,6 +2,8 @@ package com.intravan.salesmanagement.domain.usecase
 
 import com.intravan.salesmanagement.core.extension.resultOf
 import com.intravan.salesmanagement.core.extension.toFailedThrowable
+import com.intravan.salesmanagement.core.util.Resource
+import com.intravan.salesmanagement.domain.model.Splash
 import com.intravan.salesmanagement.domain.repository.SplashRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -16,10 +18,12 @@ import javax.inject.Inject
 class BeginSplashScreenUseCase @Inject constructor(
     private val repository: SplashRepository
 ) {
-    fun execute(): Flow<Result<Boolean>> = repository
-        .beginScreen()
-        .flowOn(Dispatchers.IO)
+    fun execute(splash: Splash): Flow<Result<Resource<Splash>>> = repository
+        .beginScreen(splash)
         .map {
+            require(!it.isFailure){
+                it.message
+            }
             resultOf { it }
         }
         .catch {

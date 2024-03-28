@@ -27,5 +27,5 @@ interface IntravanApi {
     suspend fun getStarting(
         @Field(API_POST_FIELD) params: String,
         @Path("extension") extension: String = ".aspx"
-    ):StartingAuthResponse
+    ): StartingAuthResponse
 }

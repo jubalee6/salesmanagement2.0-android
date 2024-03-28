@@ -6,7 +6,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class SplashDisplayable (
     val isAuthenticated: Boolean = false,
-    val AutoLogin: Boolean =false,
-    val versionCode: String = "",
-    val versionName: String = ""
+    val code: String = "",
+    val uuid: String = ""
 ):Parcelable

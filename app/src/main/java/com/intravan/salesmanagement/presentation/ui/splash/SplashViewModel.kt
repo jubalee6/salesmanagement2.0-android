@@ -3,8 +3,9 @@ package com.intravan.salesmanagement.presentation.ui.splash
 import androidx.lifecycle.SavedStateHandle
 import com.intravan.salesmanagement.core.util.DebugLog
 import com.intravan.salesmanagement.domain.usecase.BeginSplashScreenUseCase
-import com.intravan.salesmanagement.domain.usecase.GetStartingUseCase
+import com.intravan.salesmanagement.mapper.toDomainModel
 import com.intravan.salesmanagement.mapper.toPresentationModel
+import com.intravan.salesmanagement.presentation.model.SplashDisplayable
 import com.intravan.salesmanagement.presentation.ui.splash.SplashEvent.NavigateToMain
 import com.intravan.salesmanagement.presentation.ui.splash.SplashUiState.PartialState
 import com.intravan.salesmanagement.presentation.ui.splash.SplashUiState.PartialState.Fetched
@@ -23,7 +24,6 @@ import javax.inject.Inject
 @HiltViewModel
 class SplashViewModel @Inject constructor(
     private val beginSplashScreenUseCase: BeginSplashScreenUseCase,
-    private val getstartingUseCase: GetStartingUseCase,
     savedStateHandle: SavedStateHandle,
     initialState: SplashUiState
 ) : AnalyticsViewModel<SplashUiState, PartialState, SplashEvent, SplashIntent>(
@@ -32,14 +32,12 @@ class SplashViewModel @Inject constructor(
 ) {
 
     init {
-        acceptIntent(SplashIntent.BeginScreen)
-        acceptIntent(SplashIntent.Starting)
+        acceptIntent(beginScreen())
     }
 
     override fun mapIntents(intent: SplashIntent): Flow<PartialState> =
         when (intent) {
-            is SplashIntent.BeginScreen -> beginScreen()
-            is SplashIntent.Starting -> starting()
+            is SplashIntent.BeginScreen -> beginScreen(intent.display)
         }
 
     override fun reduceUiState(
@@ -67,25 +65,10 @@ class SplashViewModel @Inject constructor(
     }
 
     // 화면시작.
-    private fun beginScreen(): Flow<PartialState> = flow {
+    private fun beginScreen(display: SplashDisplayable): Flow<PartialState> = flow {
         beginSplashScreenUseCase
-            .execute()
+            .execute(display.toDomainModel())
             .flowOn(Dispatchers.Default)
-            .onStart {
-                emit(PartialState.Loading)
-            }
-            .collect { result ->
-                result
-                    .onSuccess { }
-                    .onFailure { }
-            }
-    }
-
-    // 초기정보.
-    private fun starting(): Flow<PartialState> = flow {
-        getstartingUseCase
-            .execute()
-            .flowOn(Dispatchers.IO)
             .onStart {
                 emit(PartialState.Loading)
             }
@@ -93,7 +76,6 @@ class SplashViewModel @Inject constructor(
                 result
                     .onSuccess {
                         emit(Fetched(it.value.toPresentationModel()))
-
                         when {
                             it.value.isAuthenticated -> publishEvent(NavigateToMain)
                             else -> publishEvent(SplashEvent.NavigateToAuth)
@@ -101,9 +83,7 @@ class SplashViewModel @Inject constructor(
                         DebugLog.e { "CLICK AUTH -> >>>>>>>${publishEvent(NavigateToMain)}" }
                         DebugLog.e { "CLICK AUTH -> >>>>>>>${publishEvent(SplashEvent.NavigateToAuth)}" }
                     }
-                    .onFailure {
-                        publishEvent(SplashEvent.StartingFailed(it.message ?: ""))
-                    }
+                    .onFailure { publishEvent(SplashEvent.StartingFailed(it.message ?: ""))}
             }
     }
 }
