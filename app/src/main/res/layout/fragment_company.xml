@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    >
+    <!-- 타이틀. -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_title"
+        style="@style/StyleTextView.ExtraBold.Large.ActionBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/list_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <!-- 이전. -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_back"
+        android:layout_width="@dimen/dp56"
+        android:layout_height="0dp"
+        android:elevation="4dp"
+        android:scaleType="center"
+        android:src="@drawable/selector_ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@+id/textview_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textview_title"
+        />
+    <!-- 검색. -->
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_search"
+        style="@style/StyleEnhancedEditText.Bold.Medium.Corners.White"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp16"
+        android:hint="@string/list_search_hint"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:minHeight="@dimen/dp48"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_title"
+        />
+    <!-- 결과. -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp16"
+        android:background="@drawable/rectangle_8dp_white_none"
+        android:clipToOutline="true"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_search"
+        tools:listitem="@layout/view_company_item"
+        tools:targetApi="s"
+        />
+    <!-- 결과. -->
+    <include
+        android:id="@+id/layout_result"
+        layout="@layout/include_list_result"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerview"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerview"
+        app:layout_constraintStart_toStartOf="@+id/recyclerview"
+        app:layout_constraintTop_toTopOf="@+id/recyclerview"
+        />
+    <!-- 로딩. -->
+    <include
+        android:id="@+id/layout_loading"
+        layout="@layout/include_loading"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerview"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerview"
+        app:layout_constraintStart_toStartOf="@+id/recyclerview"
+        app:layout_constraintTop_toTopOf="@+id/recyclerview"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

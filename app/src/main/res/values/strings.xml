@@ -18,7 +18,13 @@
     <string name="main_menu_call">통화이력</string>
     <string name="main_menu_setting">환경설정</string>
 
-    <!-- 공통. -->
+    <!--업체리스트-->
+    <string name="list_title">업체리스트</string>
+    <string name="list_basic">기본</string>
+    <string name="list_company">업체</string>
+    <string name="list_search_hint">차량번호, 전화번호, 고객명</string>
+
+    <!--공통.-->
     <string name="text_dummy">image</string>
     <string name="text_vertical_bar">|</string>
     <string name="text_positive">예</string>
