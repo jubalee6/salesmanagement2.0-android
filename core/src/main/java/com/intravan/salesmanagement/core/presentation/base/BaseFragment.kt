@@ -3,11 +3,15 @@ package com.intravan.salesmanagement.core.presentation.base
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import com.intravan.salesmanagement.core.extension.findNavControllerSafely
+import com.intravan.salesmanagement.core.extension.registerReceiver
 import com.intravan.salesmanagement.core.util.DebugLog
+import com.intravan.salesmanagement.core.util.IntentAction
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -60,7 +64,40 @@ abstract class BaseFragment : BaseLifecycleLogFragment() {
             })
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
+        // Event BroadcastReceiver 등록.
+        registerEventReceiver()
+        // Activity onRestart BroadcastReceiver 등록.
+        registerActivityOnRestartReceiver()
+
+
+        /*// Create Delegate.
+        (activity as? FragmentCreateListener)?.onFragmentCreate(WeakReference(this))*/
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        // Event BroadcastReceiver 등록.
+        registerEventReceiverForActivated()
+
+        /*// Start Delegate.
+        (activity as? FragmentStartListener)?.onFragmentStart(WeakReference(this))*/
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        //
+        registerAppearsToShowSoftinputReceiver()
+        //
+        registerDisappearsToHideSoftinputReceiver()
+
+        // Resume Delegate.
+        //(activity as? FragmentResumeListener)?.onFragmentResume(WeakReference(this))
+    }
 
     override fun onPause() {
         super.onPause()
@@ -88,10 +125,7 @@ abstract class BaseFragment : BaseLifecycleLogFragment() {
         unregisterEventReceiver()
         // Activity onRestart BroadcastReceiver 해지.
         unregisterActivityOnRestartReceiver()
-        // 매출 사용시작 BroadcastReceiver 해지.
-        unregisterSalesUsageStartReceiver()
-        // 매출 사용중지 BroadcastReceiver 해지.
-        unregisterSalesUsageStopReceiver()
+
     }
 
     // Activity onRestart
@@ -128,6 +162,58 @@ abstract class BaseFragment : BaseLifecycleLogFragment() {
     }*/
 
     // Action Event BroadcastReceiver 등록.
+    private fun registerEventReceiver() {
+        val intentFilter = IntentFilter(IntentAction.BROADCAST_EVENT)
+        context?.run {
+            eventBroadcastReceiver = registerReceiver(intentFilter) {
+                eventBroadcastReceiver(it)
+            }
+        }
+    }
+
+    // Data BroadcastReceiver 등록.
+    private fun registerEventReceiverForActivated() {
+        val intentFilter = IntentFilter(IntentAction.BROADCAST_EVENT_ACTIVATED)
+        context?.run {
+            eventBroadcastReceiverForActivated = registerReceiver(intentFilter) {
+                eventBroadcastReceiverForActivated(it)
+            }
+        }
+    }
+
+    // Activity onRestart BroadcastReceiver 등록.
+    private fun registerActivityOnRestartReceiver() {
+        val intentFilter = IntentFilter(IntentAction.BROADCAST_ACTIVITY_ON_RESTART)
+        context?.run {
+            activityOnRestartReceiver = registerReceiver(intentFilter) {
+                onActivityRestart()
+            }
+        }
+    }
+
+    // appears softinput BroadcastReceiver 등록.
+    private fun registerAppearsToShowSoftinputReceiver() {
+        val intentFilter = IntentFilter(IntentAction.BROADCAST_APPEARS_TO_SHOW_SOFTINPUT)
+        context?.run {
+            appearsToShowSoftinputReceiver = registerReceiver(intentFilter) {
+                onAppearsToShowSoftinput()
+            }
+        }
+    }
+
+    // disappears softinput BroadcastReceiver 등록.
+    private fun registerDisappearsToHideSoftinputReceiver() {
+        val intentFilter = IntentFilter(IntentAction.BROADCAST_DISAPPEARS_TO_HIDE_SOFTINPUT)
+        context?.run {
+            disappearsToHideSoftinputReceiver = registerReceiver(intentFilter) {
+                onDisappearsToHideSoftinput()
+            }
+        }
+    }
+
+
+
+    // 매출 사용중지 BroadcastReceiver 등록.
 
 
     // Action Event BroadcastReceiver 해지.
@@ -155,15 +241,8 @@ abstract class BaseFragment : BaseLifecycleLogFragment() {
         context?.unregisterReceiver(disappearsToHideSoftinputReceiver)
     }
 
-    // 매출 사용시작 BroadcastReceiver 해지.
-    private fun unregisterSalesUsageStartReceiver() {
-        context?.unregisterReceiver(salesUsageStartReceiver)
-    }
 
-    // 매출 사용중지 BroadcastReceiver 해지.
-    private fun unregisterSalesUsageStopReceiver() {
-        context?.unregisterReceiver(salesUsageStopReceiver)
-    }
+
 
     // Event Receiver.
     protected open fun eventBroadcastReceiver(intent: Intent?) {
