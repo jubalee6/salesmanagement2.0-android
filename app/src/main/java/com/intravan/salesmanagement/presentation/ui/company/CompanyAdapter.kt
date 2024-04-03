@@ -51,16 +51,17 @@ class CompanyAdapter(
     ) {
         binding.root.tag = position
 
+        // 업체명
         binding.textviewCompanyName.text = item.comname
-
+        // 프로그램명
         binding.textviewProgramName.text = item.prgname
-
+        // 회사 고유번호
         binding.textviewComcode.text = item.comcode
-
+        // 대표자명
         binding.textviewBoss.text = item.boss
-
+        // 사업자 번호
         binding.textviewCompanyNumber.text = item.idno
-
+        //주소
         binding.textviewAddress.text = item.address1
     }
 }

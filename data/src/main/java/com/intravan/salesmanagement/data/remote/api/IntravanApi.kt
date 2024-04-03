@@ -32,7 +32,7 @@ interface IntravanApi {
 
     // 업체목록
     @FormUrlEncoded
-    @POST("intra/int_shop{extenstion}")
+    @POST("intra/int_shop{extension}")
     suspend fun getCompany(
         @Field(API_POST_FIELD) params: String,
         @Path("extension") extension: String = ".aspx"

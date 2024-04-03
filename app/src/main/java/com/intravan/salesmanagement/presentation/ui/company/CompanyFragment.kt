@@ -15,6 +15,7 @@ import com.intravan.salesmanagement.core.extension.repeatOnStarted
 import com.intravan.salesmanagement.core.presentation.base.BaseViewBindingFragment
 import com.intravan.salesmanagement.core.util.autoCleared
 import com.intravan.salesmanagement.databinding.FragmentCompanyBinding
+import com.intravan.salesmanagement.mapper.toPresentationModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
@@ -36,6 +37,11 @@ class CompanyFragment : BaseViewBindingFragment<FragmentCompanyBinding>() {
         inflater: LayoutInflater,
         container: ViewGroup?
     ) = FragmentCompanyBinding.inflate(inflater, container, false)
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.acceptIntent(CompanyIntent.GetCompany(binding.toPresentationModel()))
+    }
 
 
     override fun initScreen(view: View, savedInstanceState: Bundle?) {
