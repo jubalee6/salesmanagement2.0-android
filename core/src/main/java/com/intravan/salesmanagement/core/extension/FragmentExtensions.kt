@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.intravan.salesmanagement.core.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -29,6 +31,38 @@ inline fun Fragment.repeatOnStarted(crossinline block: suspend CoroutineScope.()
             block()
         }
     }
+}
+
+fun Fragment.findNavControllerSafely(): NavController? {
+    return if (isAdded) {
+        findNavController()
+    } else {
+        null
+    }
+}
+
+fun <T> Fragment.previousBackStackSavedState(
+    savedStateKey: String,
+    savedStateValue: T
+) {
+    findNavControllerSafely()?.previousBackStackEntry?.savedStateHandle?.set(
+        savedStateKey, savedStateValue
+    )
+}
+
+inline fun <T> Fragment.currentBackStackSavedStateObserve(
+    savedStateKey: String,
+    crossinline action: (T) -> Unit
+) {
+    findNavControllerSafely()?.currentBackStackEntry?.savedStateHandle?.getLiveData<T>(
+        savedStateKey
+    )?.observe(viewLifecycleOwner) {
+        action.invoke(it)
+    }
+}
+
+fun Fragment.findNavPreviousDestinationId(): Int? {
+    return findNavControllerSafely()?.previousBackStackEntry?.destination?.id
 }
 
 fun Fragment.showErrorAlert(

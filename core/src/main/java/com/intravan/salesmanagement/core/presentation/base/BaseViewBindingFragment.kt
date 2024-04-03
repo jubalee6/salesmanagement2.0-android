@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
 /**
  * Base ViewBinding Fragment.
  */
-abstract class BaseViewBindingFragment<T : ViewBinding> : Fragment() {
+abstract class BaseViewBindingFragment<T : ViewBinding> : BaseFragment() {
 
     // Binding.
     private var _binding: T? = null

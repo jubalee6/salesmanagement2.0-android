@@ -1,6 +1,7 @@
 package com.intravan.salesmanagement.data.remote.api
 
 import com.intravan.salesmanagement.data.remote.response.AuthNumberResponse
+import com.intravan.salesmanagement.data.remote.response.CompanyResponse
 import com.intravan.salesmanagement.data.remote.response.StartingAuthResponse
 import retrofit2.http.*
 
@@ -28,4 +29,12 @@ interface IntravanApi {
         @Field(API_POST_FIELD) params: String,
         @Path("extension") extension: String = ".aspx"
     ): StartingAuthResponse
+
+    // 업체목록
+    @FormUrlEncoded
+    @POST("intra/int_shop{extenstion}")
+    suspend fun getCompany(
+        @Field(API_POST_FIELD) params: String,
+        @Path("extension") extension: String = ".aspx"
+    ): CompanyResponse
 }

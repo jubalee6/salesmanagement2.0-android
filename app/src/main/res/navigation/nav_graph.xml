@@ -13,6 +13,25 @@
         android:label="MainFragment"
         tools:layout="@layout/fragment_main"
         >
+        <!--정비사례-->
+        <action
+            android:id="@+id/action_main_to_company"
+            app:destination="@+id/nav_fragment_company"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@layout/fragment_main"
+            />
+    </fragment>
+
+    <!--정비사례-->
+    <fragment
+        android:id="@+id/nav_fragment_company"
+        android:name="com.intravan.salesmanagement.presentation.ui.company.CompanyFragment"
+        android:label="CompanyFragment"
+        tools:layout="@layout/fragment_company"
+        >
     </fragment>
 
 </navigation>
