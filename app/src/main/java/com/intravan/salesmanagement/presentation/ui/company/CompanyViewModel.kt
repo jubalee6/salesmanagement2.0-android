@@ -3,7 +3,12 @@ package com.intravan.salesmanagement.presentation.ui.company
 import androidx.lifecycle.SavedStateHandle
 import com.intravan.salesmanagement.domain.usecase.GetCompanyUseCase
 import com.intravan.salesmanagement.mapper.toPresentationModel
+import com.intravan.salesmanagement.presentation.ui.company.CompanyIntent.GetCompany
 import com.intravan.salesmanagement.presentation.ui.company.CompanyUiState.PartialState
+import com.intravan.salesmanagement.presentation.ui.company.CompanyUiState.PartialState.Cached
+import com.intravan.salesmanagement.presentation.ui.company.CompanyUiState.PartialState.Error
+import com.intravan.salesmanagement.presentation.ui.company.CompanyUiState.PartialState.Fetched
+import com.intravan.salesmanagement.presentation.ui.company.CompanyUiState.PartialState.Loading
 import com.intravan.salesmanagement.presentation.viewmodel.AnalyticsViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -26,31 +31,35 @@ class CompanyViewModel @Inject constructor(
     initialState
 ){
 
+    init {
+        acceptIntent(GetCompany())
+    }
+
     override fun mapIntents(intent: CompanyIntent): Flow<PartialState> = when(intent){
-       is CompanyIntent.GetCompany -> getCompany()
+       is GetCompany -> getCompany()
     }
 
     override fun reduceUiState(
         uiState: CompanyUiState,
         partial: PartialState
     ): CompanyUiState = when (partial){
-        is PartialState.Loading -> uiState.copy(
+        is Loading -> uiState.copy(
             isError = false,
             isLoading = true,
             message = ""
         )
-        is PartialState.Cached -> uiState.copy(
+        is Cached -> uiState.copy(
             isError = false,
             message = "",
             display = partial.display
         )
-        is PartialState.Fetched -> uiState.copy(
+        is Fetched -> uiState.copy(
             isError = false,
             isLoading = false,
             message = "",
             display = partial.display
         )
-        is PartialState.Error -> uiState.copy(
+        is Error -> uiState.copy(
             isError = true,
             isLoading = false,
             message = partial.throwable.message?:""
@@ -63,15 +72,15 @@ class CompanyViewModel @Inject constructor(
             .execute()
             .flowOn(Dispatchers.Default)
             .onStart {
-                emit(PartialState.Loading)
+                emit(Loading)
             }
             .collect{result ->
                 result
                     .onSuccess {
-                        emit(PartialState.Fetched(it.value.toPresentationModel()))
+                        emit(Fetched(it.value.toPresentationModel()))
                     }
                     .onFailure {
-                        emit(error(it))
+                        emit(Error(it))
                     }
             }
     }

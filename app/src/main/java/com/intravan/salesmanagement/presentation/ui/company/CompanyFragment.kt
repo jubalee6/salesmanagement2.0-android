@@ -15,7 +15,6 @@ import com.intravan.salesmanagement.core.extension.repeatOnStarted
 import com.intravan.salesmanagement.core.presentation.base.BaseViewBindingFragment
 import com.intravan.salesmanagement.core.util.autoCleared
 import com.intravan.salesmanagement.databinding.FragmentCompanyBinding
-import com.intravan.salesmanagement.mapper.toPresentationModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
@@ -38,14 +37,7 @@ class CompanyFragment : BaseViewBindingFragment<FragmentCompanyBinding>() {
         container: ViewGroup?
     ) = FragmentCompanyBinding.inflate(inflater, container, false)
 
-    override fun onStart() {
-        super.onStart()
-        viewModel.acceptIntent(CompanyIntent.GetCompany(binding.toPresentationModel()))
-    }
-
-
     override fun initScreen(view: View, savedInstanceState: Bundle?) {
-
         // Adapter.
         adapter = CompanyAdapter().also {
             binding.recyclerview.adapter = it
@@ -68,12 +60,10 @@ class CompanyFragment : BaseViewBindingFragment<FragmentCompanyBinding>() {
     }
 
     override fun initListener() {
-
         // 이전.
         binding.imageviewBack.setOnClickListener {
             navigateToBack()
         }
-
     }
 
     // Handle Event.
@@ -82,7 +72,7 @@ class CompanyFragment : BaseViewBindingFragment<FragmentCompanyBinding>() {
 
     // Handle UiState.
     private fun handleUiState(uiStates: StateFlow<CompanyUiState>) = repeatOnStarted {
-        uiStates.collect{
+        uiStates.collect {
             when {
                 it.isError -> handleFailuare(it)
                 else -> handleSuccess(it)

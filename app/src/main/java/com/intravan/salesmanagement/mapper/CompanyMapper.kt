@@ -3,10 +3,8 @@ package com.intravan.salesmanagement.mapper
 import com.intravan.salesmanagement.databinding.FragmentCompanyBinding
 import com.intravan.salesmanagement.domain.model.Company
 import com.intravan.salesmanagement.presentation.model.CompanyDisplayable
-import com.intravan.salesmanagement.presentation.ui.company.CompanyAdapter
 
 fun FragmentCompanyBinding.toPresentationModel() = CompanyDisplayable(
-    items = (recyclerview.adapter as CompanyAdapter).currentList
 )
 
 fun CompanyDisplayable.toDomainModel() = Company(
