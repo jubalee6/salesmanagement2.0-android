@@ -13,6 +13,7 @@ import com.intravan.salesmanagement.R
 import com.intravan.salesmanagement.core.extension.dip
 import com.intravan.salesmanagement.core.extension.repeatOnStarted
 import com.intravan.salesmanagement.core.presentation.base.BaseViewBindingFragment
+import com.intravan.salesmanagement.core.util.DebugLog
 import com.intravan.salesmanagement.core.util.autoCleared
 import com.intravan.salesmanagement.databinding.FragmentCompanyBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -64,6 +65,38 @@ class CompanyFragment : BaseViewBindingFragment<FragmentCompanyBinding>() {
         binding.imageviewBack.setOnClickListener {
             navigateToBack()
         }
+
+        /*val textWatcher = object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                //DebugLog.w { ">>>>>>>>>>>>>>>>>>>>>>>> beforeTextChanged: $s, $start, $count, $after" }
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                DebugLog.w { ">>>>>>>>>>>>>>>>>>>>>>>> onTextChanged: $s, $start, $before, $count" }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+        }
+        binding.edittextSearch.addTextChangedListener(textWatcher)
+        binding.edittextSearch.doAfterTextChanged {
+            DebugLog.w { ">>>>>>>>>>>>>>>>>>>>>>>> doAfterTextChanged: ${it.toString()}" }
+        }*/
+
+
+        // 검색(키패드).
+      /*  binding.edittextSearch.setOnClickListener {
+            val searchText = (it as? AppCompatEditText)?.text.toString()
+            viewModel.acceptIntent(CompanyIntent.SearchClicked(searchText))
+        }*/
+
+        binding.edittextSearch.setOnClickListener {
+            /*val searchText = binding.edittextSearch.getStringByTrim()
+            val searchText = binding.edittextSearch.text.toString()
+            */val searchText = binding.edittextSearch.text.toString().trim()
+            viewModel.acceptIntent(CompanyIntent.SearchClicked(searchText))
+            DebugLog.e { "<<<<<<<SearchClicked ${CompanyIntent.SearchClicked(searchText)}" }
+        }
     }
 
     // Handle Event.
@@ -89,7 +122,8 @@ class CompanyFragment : BaseViewBindingFragment<FragmentCompanyBinding>() {
 
     // 성공.
     private fun handleSuccess(uiStates: CompanyUiState) {
-        adapter.submitList(uiStates.display.items)
+        adapter.submitList(uiStates.display.searchedItems)
+        DebugLog.i { "<<<<<<<<<<<<< adapter : ${uiStates.display.searchedItems}" }
     }
 
     // 실패.

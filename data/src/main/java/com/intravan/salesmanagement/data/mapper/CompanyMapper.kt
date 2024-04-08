@@ -3,11 +3,16 @@ package com.intravan.salesmanagement.data.mapper
 import com.intravan.salesmanagement.data.remote.response.CompanyResponse
 import com.intravan.salesmanagement.domain.model.Company
 
-fun CompanyResponse.toDomainModel() = Company(
-    items = items.map {
+fun CompanyResponse.toDomainModel() = items
+    .map {
         it.toDomainModel()
+    }.let {
+        Company(
+            items =it,
+            searchedItems = it
+        )
     }
-)
+
 
 fun CompanyResponse.Item.toDomainModel() = Company.Item(
     comcode = comcode,

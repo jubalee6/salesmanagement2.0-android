@@ -1,6 +1,8 @@
 package com.intravan.salesmanagement.domain.model
 
 data class Company(
+    val searchText: String = "",
+    val searchedItems: List<Item> = emptyList(),
     val items: List<Item> = emptyList()
 ) {
     data class Item(

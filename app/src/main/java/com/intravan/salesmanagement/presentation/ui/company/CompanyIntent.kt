@@ -10,4 +10,6 @@ sealed class CompanyIntent {
     data class GetCompany(
         val display: CompanyDisplayable = CompanyDisplayable()
     ): CompanyIntent()
+
+    data class SearchClicked(val searchText: String) : CompanyIntent()
 }

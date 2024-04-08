@@ -75,6 +75,6 @@ class CompanyAdapter(
         // 사업자 번호
         binding.textviewCompanyNumber.text = item.idno
         //주소
-        binding.textviewAddress.text = "${item.address1}"+""+"${item.address2}"
+        binding.textviewAddress.text = "${item.address1}"+" "+"${item.address2}"
     }
 }

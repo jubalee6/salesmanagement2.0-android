@@ -8,9 +8,14 @@ fun FragmentCompanyBinding.toPresentationModel() = CompanyDisplayable(
 )
 
 fun CompanyDisplayable.toDomainModel() = Company(
+    searchText = searchText,
     items = items.map {
         it.toDomainModel()
+    },
+    searchedItems = searchedItems.map {
+        it.toDomainModel()
     }
+
 )
 
 fun CompanyDisplayable.Item.toDomainModel() = Company.Item(
@@ -47,7 +52,11 @@ fun CompanyDisplayable.Item.toDomainModel() = Company.Item(
 )
 
 fun Company.toPresentationModel() = CompanyDisplayable(
+    searchText = searchText,
     items = items.map {
+        it.toPresentationModel()
+    },
+    searchedItems = searchedItems.map {
         it.toPresentationModel()
     }
 )
