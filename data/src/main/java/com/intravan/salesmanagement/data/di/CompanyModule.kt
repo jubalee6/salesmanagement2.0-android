@@ -1,7 +1,9 @@
 package com.intravan.salesmanagement.data.di
 
+import com.intravan.salesmanagement.data.datasource.local.CompanyLocalDataSourceImpl
 import com.intravan.salesmanagement.data.datasource.remote.CompanyRemoteDataSourceImpl
 import com.intravan.salesmanagement.data.repository.CompanyRepositoryImpl
+import com.intravan.salesmanagement.domain.datasource.local.CompanyLocalDataSource
 import com.intravan.salesmanagement.domain.datasource.remote.CompanyRemoteDataSource
 import com.intravan.salesmanagement.domain.repository.CompanyRepository
 import dagger.Binds
@@ -24,5 +26,9 @@ object CompanyModule {
         @Binds
         @Singleton
         fun bindCompanyRemoteDataSource(remoteDataSourceImpl: CompanyRemoteDataSourceImpl): CompanyRemoteDataSource
+
+        @Binds
+        @Singleton
+        fun bindCompanyLocalDataSource(localDataSourceImpl: CompanyLocalDataSourceImpl): CompanyLocalDataSource
     }
 }

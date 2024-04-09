@@ -116,14 +116,13 @@ class CompanyFragment : BaseViewBindingFragment<FragmentCompanyBinding>() {
 
     // 로딩.
     private fun handleLoading(uiStates: CompanyUiState) {
-        binding.layoutResult.layoutResult.isVisible = uiStates.display.items.isEmpty()
+        binding.layoutResult.layoutResult.isVisible = uiStates.display.searchedItems.isEmpty()
         binding.layoutLoading.layoutLoading.isVisible = uiStates.isLoading
     }
 
     // 성공.
     private fun handleSuccess(uiStates: CompanyUiState) {
         adapter.submitList(uiStates.display.searchedItems)
-        DebugLog.i { "<<<<<<<<<<<<< adapter : ${uiStates.display.searchedItems}" }
     }
 
     // 실패.

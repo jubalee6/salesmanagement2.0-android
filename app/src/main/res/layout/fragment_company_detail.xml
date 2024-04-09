@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    >
+    <!-- 타이틀. -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_title"
+        style="@style/StyleTextView.ExtraBold.Large.ActionBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/list_title_detail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <!-- 이전. -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_back"
+        android:layout_width="@dimen/dp56"
+        android:layout_height="0dp"
+        android:elevation="4dp"
+        android:scaleType="center"
+        android:src="@drawable/selector_ic_arrow_left"
+        app:layout_constraintBottom_toBottomOf="@+id/textview_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textview_title"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

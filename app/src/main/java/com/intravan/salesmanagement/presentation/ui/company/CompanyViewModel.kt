@@ -1,6 +1,8 @@
 package com.intravan.salesmanagement.presentation.ui.company
 
 import androidx.lifecycle.SavedStateHandle
+import com.intravan.salesmanagement.core.extension.onCache
+import com.intravan.salesmanagement.core.extension.onSuccess
 import com.intravan.salesmanagement.core.util.DebugLog
 import com.intravan.salesmanagement.domain.usecase.GetCompanyUseCase
 import com.intravan.salesmanagement.domain.usecase.SearchCompanyUseCase
@@ -85,8 +87,26 @@ class CompanyViewModel @Inject constructor(
             }
             .collect { result ->
                 result
-                    .onSuccess {
+                    .onSuccess { resource ->
+                        /*if (it.isCache) {
+                            emit(Cached(it.value.toPresentationModel()))
+                        } else if (it.isSuccess) {
+                            emit(Fetched(it.value.toPresentationModel()))
+                        }*/
+
+                        resource.onCache {
+                            emit(Cached(it.toPresentationModel()))
+                        }
+                        resource.onSuccess {
+                            emit(Fetched(it.toPresentationModel()))
+                        }
+
+                        DebugLog.w { ">>>>>>>>>> isCache : ${resource.isCache}" }
+                        DebugLog.w { ">>>>>>>>>> isSuccess : ${resource.isSuccess}" }
+                        DebugLog.w { ">>>>>>>>>> isFailure : ${resource.isFailure}" }
+                        /*
                         emit(Fetched(it.value.toPresentationModel()))
+                        */
                     }
                     .onFailure {
                         emit(Error(it))

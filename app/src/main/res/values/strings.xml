@@ -24,6 +24,10 @@
     <string name="list_company">업체</string>
     <string name="list_search_hint">차량번호, 전화번호, 고객명</string>
 
+    <!--업체리스트 상세-->
+    <string name="list_title_detail">상세</string>
+
+
     <!--공통.-->
     <string name="text_dummy">image</string>
     <string name="text_vertical_bar">|</string>

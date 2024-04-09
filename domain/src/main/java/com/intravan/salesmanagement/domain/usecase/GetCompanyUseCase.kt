@@ -19,7 +19,9 @@ class GetCompanyUseCase @Inject constructor(private val reppsitory: CompanyRepos
             require(!it.isFailure) {
                 it.message
             }
-            resultOf { it }
+            resultOf {
+                it
+            }
         }
         .catch {
             emit(Result.failure(it.toFailedThrowable()))
